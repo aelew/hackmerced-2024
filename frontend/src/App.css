@@ -33,6 +33,29 @@ main {
   font-size: 20px;
 }
 
+.search-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  all: unset;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 400px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-bar input[type="image"] {
+  position: absolute;
+  margin-left: 350px;
+}
+
 .nav-bar {
   display: flex;
   align-items: center;

@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const Card = ({icon, text}) => {
+const Card = ({ icon, text }) => {
   return (
     <div>
-        <div className="icon">{icon}</div>
-        <p>{text}</p>
+      <div className="icon">{icon}</div>
+      <p>{text}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

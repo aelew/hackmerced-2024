@@ -4,12 +4,12 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const containerStyle = {
   width: '100%',
   height: '80vh',
-  borderRadius: '0.5rem',
+  borderRadius: '0.5rem'
 };
 
 const center = {
   lat: 37.3647,
-  lng: -120.4241,
+  lng: -120.4241
 };
 
 const createTileUrlFunction = () => {
@@ -44,7 +44,7 @@ const getNormalizedCoord = (coord, zoom) => {
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
   });
 
   const mapRef = useRef(null);
@@ -62,7 +62,7 @@ export default function Map() {
       const tileUrlFunction = createTileUrlFunction();
       const coordMapType = new window.google.maps.ImageMapType({
         getTileUrl: tileUrlFunction,
-        tileSize: new window.google.maps.Size(256, 256),
+        tileSize: new window.google.maps.Size(256, 256)
       });
 
       map.overlayMapTypes.push(coordMapType);

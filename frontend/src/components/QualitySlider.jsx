@@ -4,34 +4,34 @@ import Slider from '@mui/material/Slider';
 const marks = [
   {
     value: 0,
-    label: 'Great',
+    label: 'Great'
   },
   {
     value: 25,
-    label: 'Good',
+    label: 'Good'
   },
   {
     value: 50,
-    label: 'Ok',
+    label: 'Ok'
   },
   {
     value: 75,
-    label: 'Bad',
+    label: 'Bad'
   },
   {
     value: 100,
-    label: 'Terrible',
-  },
+    label: 'Terrible'
+  }
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-export default function DiscreteSliderMarks({text}) {
+export default function DiscreteSliderMarks({ text }) {
   return (
     <Box sx={{ width: 200 }}>
-      <div className='slider-title'>{text}</div>
+      <div className="slider-title">{text}</div>
       <Slider
         aria-label="Custom marks"
         defaultValue={20}

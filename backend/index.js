@@ -1,24 +1,25 @@
 import express from 'express';
 import mongoose from 'mongoose';
+
 import 'dotenv/config';
 
 const app = express();
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI; // set URI 
+const mongoUri = process.env.MONGODB_URI; // set URI
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Verify connection 
+// Verify connection
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
+db.once('open', function () {
   console.log('Connected to MongoDB database');
 });
 
 // Template values
 const userSchema = new mongoose.Schema({
   name: String,
-  email: String,
+  email: String
   // add more fields here
 });
 

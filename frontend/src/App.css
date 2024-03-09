@@ -5,19 +5,18 @@
   list-style: none;
 }
 
-body{
+body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
 
 main {
   display: flex;
   padding: 2rem;
 }
 
-.header-box{
+.header-box {
   width: 100%;
   height: 100px;
   background-color: rgb(218, 125, 125);
@@ -25,7 +24,7 @@ main {
   justify-content: center;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +39,7 @@ main {
   align-items: center;
 }
 
-.search-bar input[type="text"] {
+.search-bar input[type='text'] {
   all: unset;
   background-color: rgba(255, 255, 255, 0.3);
   width: 400px;
@@ -51,7 +50,7 @@ main {
   font-size: 16px;
 }
 
-.search-bar input[type="image"] {
+.search-bar input[type='image'] {
   position: absolute;
   margin-left: 350px;
 }
@@ -61,11 +60,12 @@ main {
   align-items: center;
 }
 
-.nav-bar button, .nav-bar img {
-    margin-right: 30px;
+.nav-bar button,
+.nav-bar img {
+  margin-right: 30px;
 }
 
-.sidebar{
+.sidebar {
   position: absolute;
   height: 80vh;
   background-color: rgb(227, 223, 215);
@@ -80,12 +80,11 @@ main {
   overflow-y: auto;
 }
 
-
-.sidebar.active{
+.sidebar.active {
   right: 0;
 }
 
-.sidebar h1{
+.sidebar h1 {
   width: 70%;
   padding: 50px 0;
   color: rgb(43, 42, 42);
@@ -94,8 +93,7 @@ main {
   justify-content: space-between;
 }
 
-
-.section{
+.section {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -105,8 +103,8 @@ main {
   margin-bottom: 20px;
 }
 
-.sidebar h3{
-  background-color: rgb(218, 125, 125); 
+.sidebar h3 {
+  background-color: rgb(218, 125, 125);
   width: 100%;
   text-align: center;
   height: 30px;
@@ -126,7 +124,6 @@ main {
   -ms-user-select: none;
   user-select: none;
 }
-
 
 /* Hide the browser's default checkbox */
 .container input {
@@ -163,7 +160,7 @@ main {
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -186,7 +183,7 @@ main {
   transform: rotate(45deg);
 }
 
-.slider-title{
+.slider-title {
   text-align: center;
   font-weight: 600;
 }
@@ -202,21 +199,21 @@ main {
   cursor: pointer;
 }
 
-.button p{
+.button p {
   padding: 10px 50px 10px 50px;
 }
 
-.summary-card{
+.summary-card {
   height: 600px;
   width: 96%;
   background-color: rgb(227, 223, 215);
   border-radius: 50px;
   margin-left: 2%;
   border: 10px solid rgb(218, 125, 125);
-  color: rgb(46, 46, 46)
+  color: rgb(46, 46, 46);
 }
 
-.summary-card h1{
+.summary-card h1 {
   padding-top: 30px;
   padding-left: 30px;
 }
@@ -234,10 +231,10 @@ main {
 }
 
 .card {
-   border-radius: 15px;
-    background-color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 .icon {
   font-size: 25px;
   padding: 5px;
@@ -257,7 +254,7 @@ main {
 .yellow {
   border: 2px solid yellow;
 }
-.greenyellow{
+.greenyellow {
   border: 2px solid greenyellow;
 }
 .green {

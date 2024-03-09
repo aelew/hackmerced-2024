@@ -7,17 +7,18 @@ import React, { useState } from 'react'
 const Sidebar = ({onClick}) => {
   const[selectedType, setSelectedType] = useState('');
 
-  const handleSelectCategory = (type) => {
-    setSelectedCategory(type);
-    onCategorySelect(type);
+  const handleSelectedType = (type) => {
+    setSelectedType(type);
+    onClick(type);
   };
   return (
     <div className='sidebar active'>
       <h1>Settings <IoMdSettings size={50}/></h1>
       <h3>Tracking:</h3>
       <div className='section'>
+        {/* add weed, tree, grass subsection drop downs possibly?*/}
         {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map((type) => (
-          <SelectButton key={type} text={type} type='radio' isSelected={selectedType === type} onClick={() => handleSelectType(type)}/>
+          <SelectButton key={type} text={type} type='radio' isSelected={selectedType === type} onClick={() => handleSelectedType(type)}/>
         ))}
       </div>
       <h3>Vulnerabilities:</h3>

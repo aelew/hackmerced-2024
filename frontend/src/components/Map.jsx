@@ -1,7 +1,9 @@
 import {
   AdvancedMarker,
+  ControlPosition,
   Map as GoogleMap,
   InfoWindow,
+  MapControl,
   Marker,
   useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
@@ -72,6 +74,14 @@ export default function Map() {
       >
         {/* Child components, such as markers, info windows, etc. go in here */}
         <Marker position={defaultPosition} />
+        <MapControl position={ControlPosition.TOP_RIGHT}>
+          {place && (
+            <div className="place-card">
+              <h1>{place.name}</h1>
+              <p>{place.formatted_address}</p>
+            </div>
+          )}
+        </MapControl>
         <AdvancedMarker
           ref={markerRef}
           position={defaultPosition}
@@ -86,12 +96,6 @@ export default function Map() {
           </InfoWindow>
         )}
       </GoogleMap>
-      {place && (
-        <div className="place-card">
-          <h1>{place.name}</h1>
-          <p>{place.formatted_address}</p>
-        </div>
-      )}
     </div>
   );
 }

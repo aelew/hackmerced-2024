@@ -15,9 +15,13 @@ export default function Search() {
 
   const handlePlaceUpdate = useCallback(
     (place) => {
+      if (!place.geometry) {
+        alert('No data available for that location. Please try again.');
+        return;
+      }
       setPlace(place);
       console.log('place updated', place);
-      if (place.geometry?.viewport) {
+      if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
       }
     },

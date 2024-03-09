@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-
+import Search from './Search.jsx';
 import person from '../assets/person-icon.png';
 import search from '../assets/search.png';
 import menu from '../assets/menu.png';
@@ -10,6 +10,7 @@ const Header = () => {
     <div className="header-box">
       <div className="header">
         <h1>Health Map</h1>
+        <Search />
         <nav className="nav-bar">
           <button
             onClick={() =>

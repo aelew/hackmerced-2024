@@ -1,8 +1,8 @@
 const SelectButton = ({text, type, checkstate}) => {
   return (
-    <label class='container'>{text}
+    <label className='container'>{text}
         <input type={type} checked = {checkstate} name={type}/>
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
     </label>
   )
 }

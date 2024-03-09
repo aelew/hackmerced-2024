@@ -8,12 +8,10 @@ import './App.css';
 
 function App() {
   const[showSummary, setShowSummary] = useState(false)
-  const buttonRef = useRef(null);
 
   const displaySummary = () => {
     setShowSummary(true)
     console.log(showSummary)
-    buttonRef.current.scrollIntoView();
   }
 
   return (
@@ -23,7 +21,7 @@ function App() {
         <Map />
         <Sidebar summaryState = {showSummary} onClick = {displaySummary}/>
       </main>
-      {showSummary && <Summary sumaryState = {showSummary} ref={buttonRef}/>}
+      {showSummary && <Summary sumaryState = {showSummary}/>}
     </>
   );
 }

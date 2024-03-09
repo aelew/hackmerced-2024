@@ -28,7 +28,6 @@ const Header = () => {
             {isAuthenticated ? 'Log out' : 'Log in'}
           </button>
           <img src={person} width="25px" />
-          <img src={search} width="25px" />
           <img src={menu} width="25px" />
         </nav>
       </div>

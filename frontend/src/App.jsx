@@ -23,9 +23,7 @@ function App() {
         <Map />
         <Sidebar summaryState = {showSummary} onClick = {displaySummary}/>
       </main>
-      <section ref={buttonRef}>
-        {showSummary && <Summary sumaryState = {showSummary}/>}
-      </section>
+      {showSummary && <Summary sumaryState = {showSummary} ref={buttonRef}/>}
     </>
   );
 }

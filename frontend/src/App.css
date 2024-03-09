@@ -32,7 +32,13 @@ main {
   width: 90%;
   font-size: 20px;
 }
-.nav-bar img{
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar button, .nav-bar img {
     margin-right: 30px;
 }
 

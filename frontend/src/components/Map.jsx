@@ -1,6 +1,14 @@
-import { Map as GoogleMap, Marker } from '@vis.gl/react-google-maps';
+import {
+  AdvancedMarker,
+  Map as GoogleMap,
+  InfoWindow,
+  Marker,
+  useAdvancedMarkerRef,
+  useMap
+} from '@vis.gl/react-google-maps';
+import { useState } from 'react';
 
-const center = {
+const defaultPosition = {
   lat: 37.3647,
   lng: -120.4241
 };
@@ -35,17 +43,9 @@ const getNormalizedCoord = (coord, zoom) => {
 };
 
 export default function Map() {
-  // const mapRef = useRef(null);
-
-  // const onLoad = useCallback(
-  //   (map) => {
-  //     mapRef.current = map;
-  //     const bounds = new window.google.maps.LatLngBounds(center);
-  //     map.fitBounds(bounds);
-  //     setMap(map);
-  //   },
-  //   [setMap]
-  // );
+  // for our UC merced marker
+  const [infowindowOpen, setInfowindowOpen] = useState(true);
+  const [markerRef, marker] = useAdvancedMarkerRef();
 
   // useEffect(() => {
   //   if (isLoaded && map) {
@@ -59,26 +59,33 @@ export default function Map() {
   //   }
   // }, [isLoaded, map]);
 
-  // const onUnmount = useCallback(() => {
-  //   setMap(null);
-  // }, [setMap]);
-
-  // if (!isLoaded) {
-  //   return <p>Loading map...</p>;
-  // }
-
   return (
-    <GoogleMap
-      defaultCenter={center}
-      defaultZoom={10}
-      style={{
-        width: '100%',
-        height: '80vh',
-        borderRadius: '0.5rem'
-      }}
-    >
-      {/* Child components, such as markers, info windows, etc. go in here */}
-      <Marker position={center} />
-    </GoogleMap>
+    <div className="map-container">
+      <GoogleMap
+        mapId="e539c9b65757ae2"
+        className="map"
+        defaultZoom={10}
+        defaultCenter={defaultPosition}
+      >
+        {/* Child components, such as markers, info windows, etc. go in here */}
+        <Marker position={defaultPosition} />
+        <AdvancedMarker
+          ref={markerRef}
+          position={defaultPosition}
+          onClick={() => setInfowindowOpen(true)}
+        />
+        {infowindowOpen && (
+          <InfoWindow
+            anchor={marker}
+            onCloseClick={() => setInfowindowOpen(false)}
+          >
+            UC Merced
+          </InfoWindow>
+        )}
+      </GoogleMap>
+      <div className="place-card">
+        Place: {}
+      </div>
+    </div>
   );
 }

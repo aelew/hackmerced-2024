@@ -43,6 +43,7 @@ export default function Search() {
     placeAutocomplete.addListener('place_changed', () => {
       const place = placeAutocomplete.getPlace();
       handlePlaceUpdate(place);
+      inputRef.current.value = '';
     });
   }, [placeAutocomplete, handlePlaceUpdate]);
 

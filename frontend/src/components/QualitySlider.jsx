@@ -34,7 +34,7 @@ export default function DiscreteSliderMarks({text}) {
       <div className='slider-title'>{text}</div>
       <Slider
         aria-label="Custom marks"
-        defaultValue={20}
+        defaultValue={20} 
         getAriaValueText={valuetext}
         step={10}
         valueLabelDisplay="auto"

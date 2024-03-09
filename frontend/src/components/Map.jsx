@@ -3,10 +3,11 @@ import {
   Map as GoogleMap,
   InfoWindow,
   Marker,
-  useAdvancedMarkerRef,
-  useMap
+  useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
 import { useState } from 'react';
+
+import { useAppContext } from '../AppContext';
 
 const defaultPosition = {
   lat: 37.3647,
@@ -43,6 +44,8 @@ const getNormalizedCoord = (coord, zoom) => {
 };
 
 export default function Map() {
+  const { place } = useAppContext();
+
   // for our UC merced marker
   const [infowindowOpen, setInfowindowOpen] = useState(true);
   const [markerRef, marker] = useAdvancedMarkerRef();
@@ -83,9 +86,12 @@ export default function Map() {
           </InfoWindow>
         )}
       </GoogleMap>
-      <div className="place-card">
-        Place: {}
-      </div>
+      {place && (
+        <div className="place-card">
+          <h1>{place.name}</h1>
+          <p>{place.formatted_address}</p>
+        </div>
+      )}
     </div>
   );
 }

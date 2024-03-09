@@ -21,7 +21,7 @@ export default function Search() {
         map.fitBounds(place.geometry.viewport);
       }
     },
-    [map]
+    [map, setPlace]
   );
 
   useEffect(() => {

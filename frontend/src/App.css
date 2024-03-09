@@ -274,11 +274,11 @@ main {
 .place-card {
   font-size: 14px;
   line-height: 18px;
-  width: 284px;
+  width: 30%;
   background: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
-  margin: 24px;
-  padding: 12px 24px;
+  margin: 1.75rem;
+  padding: 1rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -286,12 +286,20 @@ main {
   cursor: auto;
   box-sizing: border-box;
   color: #000;
+  border-radius: 0.375rem;
 }
 
+.place-card h1 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+/* Google Maps marker color fix */
 .gm-style-iw-d {
   color: #000;
 }
 
+/* Google Maps marker popup close button outline fix */
 button.gm-ui-hover-effect {
   outline: none;
 }

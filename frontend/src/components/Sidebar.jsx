@@ -1,4 +1,3 @@
-import React from 'react'
 import Form from './Form.jsx'
 import Info from './Info.jsx'
 import QualitySlider from './QualitySlider.jsx'

@@ -1,7 +1,6 @@
-import React from 'react'
-import person from './assets/person-icon.png'
-import search from './assets/search.png'
-import menu from './assets/menu.png'
+import person from '../assets/person-icon.png'
+import search from '../assets/search.png'
+import menu from '../assets/menu.png'
 
 const Header = () => {
   return (

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Form = ({text}) => {
   return (
     <label class="container">{text}

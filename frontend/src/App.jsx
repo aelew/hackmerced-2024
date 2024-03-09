@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import Header from './Header.jsx'
-import Functionality from './Functionality.jsx'
-import Map from './components/Map.jsx'
+import Header from './components/Header.jsx';
+import Map from './components/Map.jsx';
+import Sidebar from './components/Sidebar.jsx';
 
-import './App.css'
+import './App.css';
 
 function App() {
   return (
     <>
-      <Header/>
-      <Functionality/>
-      <div className="container">
+      <Header />
+      <main>
         <Map />
-        {/* right sidebar will go here */}
-      </div>
+        <Sidebar />
+      </main>
     </>
   );
 }

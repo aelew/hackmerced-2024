@@ -18,7 +18,7 @@ const Sidebar = ({onClick}) => {
       <div className='section'>
         {/* add weed, tree, grass subsection drop downs possibly?*/}
         {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map((type) => (
-          <SelectButton key={type} text={type} type='radio' isSelected={selectedType === type} onClick={() => handleSelectedType(type)}/>
+          <SelectButton key={type} text={type} type='radio' isSelected={selectedType === type} onChange={() => handleSelectedType(type)}/>
         ))}
       </div>
       <h3>Vulnerabilities:</h3>

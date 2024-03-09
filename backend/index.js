@@ -1,14 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
-
-dotenv.config();
+import 'dotenv/config';
 
 const app = express();
 
 // Connect to MongoDB
-const mongoUri = process.env.VITE_MONGODB_URI; // set URI 
+const mongoUri = process.env.MONGODB_URI; // set URI 
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Verify connection 

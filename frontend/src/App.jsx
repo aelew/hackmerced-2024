@@ -11,7 +11,11 @@ function App() {
 
   const displaySummary = () => {
     setShowSummary(true)
-    console.log(showSummary)
+    window.scrollTo({
+      left: 0, 
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    })
   }
 
   return (
@@ -21,7 +25,7 @@ function App() {
         <Map />
         <Sidebar summaryState = {showSummary} onClick = {displaySummary}/>
       </main>
-      {showSummary && <Summary sumaryState = {showSummary}/>}
+      {showSummary && <Summary />}
     </>
   );
 }

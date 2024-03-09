@@ -1,6 +1,7 @@
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { useCallback, useState } from 'react';
 
+
 const containerStyle = {
   width: '100%',
   height: '80vh',
@@ -19,6 +20,7 @@ export default function Map() {
   });
 
   const [map, setMap] = useState(null);
+  const [heatMap, setHeatMap] = useState(null);
 
   const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds(center);

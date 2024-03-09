@@ -298,7 +298,3 @@ button.gm-ui-hover-effect {
   outline: none;
 }
 
-/* Hide Google Maps fullscreen button */
-.gm-fullscreen-control {
-  display: none;
-}

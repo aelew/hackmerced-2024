@@ -71,6 +71,7 @@ export default function Map() {
         className="map"
         defaultZoom={10}
         defaultCenter={defaultPosition}
+        fullscreenControl={false}
       >
         {/* Child components, such as markers, info windows, etc. go in here */}
         <Marker position={defaultPosition} />

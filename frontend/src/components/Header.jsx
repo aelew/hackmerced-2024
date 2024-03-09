@@ -1,6 +1,6 @@
-import React from 'react'
-import person from './assets/person-icon.png'
-import search from './assets/search.png'
+import person from '../assets/person-icon.png'
+import search from '../assets/search.png'
+import menu from '../assets/menu.png'
 
 const Header = () => {
   return (
@@ -10,6 +10,7 @@ const Header = () => {
         <nav className='nav-bar'>
             <img src ={person} width = '25px'/>
             <img src ={search} width = '25px'/>
+            <img src ={menu} width = '25px'/>
         </nav>
         </div>
     </div>

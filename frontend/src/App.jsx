@@ -1,15 +1,17 @@
-import Header from './Header.jsx';
+import Header from './components/Header.jsx';
 import Map from './components/Map.jsx';
+import Sidebar from './components/Sidebar.jsx';
+
 import './App.css';
 
 function App() {
   return (
     <>
       <Header />
-      <div className="container">
+      <main>
         <Map />
-        {/* right sidebar will go here */}
-      </div>
+        <Sidebar />
+      </main>
     </>
   );
 }

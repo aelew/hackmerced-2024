@@ -1,10 +1,10 @@
-const SelectButton = ({text, type, checkstate}) => {
+const SelectButton = ({ text, type, checkstate, onChange }) => {
   return (
-    <label class='container'>{text}
-        <input type={type} checked = {checkstate} name={type}/>
-        <span class="checkmark"></span>
+    <label className='container'>{text}
+      <input type={type} checked={checkstate} onChange={onChange} name={type === 'radio' ? 'trackingSelection' : text}/>
+      <span className="checkmark"></span>
     </label>
-  )
-}
+  );
+};
 
-export default SelectButton
+export default SelectButton;

@@ -14,19 +14,19 @@ const Sidebar = () => {
         <Form text='Covid-19'/>
         <Form text='Flu'/>
       </div>
-      <h3>Vulnerabilities</h3>
+      <h3>Vulnerabilities:</h3>
       <div className='section'>
         <Form text='Allergy'/>
         <Form text='Respiratory'/>
         <Form text='Immune System'/>
       </div>
-      <h3>Personal Preferences</h3>
+      <h3>Personal Tolerances:</h3>
       <div className='section'>
-        <QualitySlider/>
-        <QualitySlider/>
-        <QualitySlider/>
-        <QualitySlider/>
-        <QualitySlider/>
+        <QualitySlider text='Pollen'/>
+        <QualitySlider text='Air Quality'/>
+        <QualitySlider text='Radiation'/>
+        <QualitySlider text='Covid-19'/>
+        <QualitySlider text='Flu'/>
       </div>
       <h3>Summary:</h3>
       <div className="section">

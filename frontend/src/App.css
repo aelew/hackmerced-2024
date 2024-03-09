@@ -39,9 +39,9 @@ main {
 .sidebar{
   position: absolute;
   height: 89vh;
-  background-color: black;
+  background-color: rgb(227, 223, 215);
   width: 20%;
-  color: rgb(255, 255, 255);
+  color: rgb(46, 46, 46);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -57,7 +57,7 @@ main {
 
 .sidebar h1{
   padding: 50px 0;
-  color: white;
+  color: rgb(43, 42, 42);
 }
 
 .section{
@@ -109,7 +109,7 @@ main {
 }
 
 .container:hover {
-  background-color: rgba(0, 0, 70, 0.741);
+  background-color: rgba(255, 187, 103, 0.741);
   border-radius: 5px;
 }
 
@@ -119,7 +119,7 @@ main {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: rgb(125, 171, 218);
+  background-color: rgb(89, 198, 133);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -149,4 +149,9 @@ main {
 
 .info{
   font-size: 14px;
+}
+
+.slider-title{
+  text-align: center;
+  font-weight: 600;
 }

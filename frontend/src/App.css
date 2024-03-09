@@ -209,7 +209,57 @@ main {
 .summary-card{
   height: 600px;
   width: 96%;
-  background-color: #eee;
+  background-color: rgb(227, 223, 215);
   border-radius: 50px;
   margin-left: 2%;
+  border: 10px solid rgb(218, 125, 125);
+  color: rgb(46, 46, 46)
+}
+
+.summary-card h1{
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+.grid {
+  margin: 50px 0 0 5%;
+
+  width: 90%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.card {
+   border-radius: 15px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+.icon {
+  font-size: 25px;
+  padding: 5px;
+  text-align: center;
+}
+
+.card p {
+  padding: 10px 20px;
+}
+
+.red {
+  border: 2px solid red;
+}
+.orange {
+  border: 2px solid orange;
+}
+.yellow {
+  border: 2px solid yellow;
+}
+.greenyellow{
+  border: 2px solid greenyellow;
+}
+.green {
+  border: 2px solid green;
 }

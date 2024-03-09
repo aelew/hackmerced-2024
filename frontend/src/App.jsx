@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Header from './Header.jsx'
-import './App.css'
-import Functionality from './functionality.jsx'
+import './App.css'  
+import Functionality from './Functionality.jsx'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Header/>
-      
+      <Functionality/>
     </>
   )
 }

@@ -14,6 +14,12 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,6 +30,6 @@ a:hover {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.2em;
 }
 

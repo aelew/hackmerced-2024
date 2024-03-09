@@ -1,11 +1,20 @@
-:root {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  list-style: none;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .header-box{
   width: 100%;
+  height: 100px;
   background-color: rgb(218, 125, 125);
   display: flex;
   justify-content: center;
@@ -15,9 +24,124 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
-  font-size: 10px;
+  width: 90%;
+  font-size: 20px;
 }
 .nav-bar img{
     margin-right: 30px;
+}
+
+.sidebar{
+  position: absolute;
+  height: 89vh;
+  background-color: black;
+  width: 20%;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  transition: all 1s;
+  right: -100%;
+  overflow-y: auto;
+}
+
+.sidebar.active{
+  right: 0;
+}
+
+.sidebar h1{
+  padding: 50px 0;
+  color: white;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 50px;
+  padding-top: 20px;
+}
+
+.sidebar h3{
+  background-color: rgb(218, 125, 125); 
+  width: 100%;
+  text-align: center;
+  height: 30px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 80%;
+  height: 25px;
+}
+
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.container:hover {
+  background-color: rgba(0, 0, 70, 0.741);
+  border-radius: 5px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: rgb(125, 171, 218);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.info{
+  font-size: 14px;
 }

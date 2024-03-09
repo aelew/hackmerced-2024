@@ -4,9 +4,9 @@ import Sidebar from './Sidebar.jsx'
 
 const Functionality = () => {
   return (
-    <div>
-    <Sidebar/>
-    <Map/>
+    <div className='functionality'>
+        <Map/>
+        <Sidebar/>
     </div>
   )
 }

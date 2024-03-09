@@ -2,18 +2,23 @@ import SelectButton from './SelectButton.jsx'
 import QualitySlider from './QualitySlider.jsx'
 import { IoMdSettings } from "react-icons/io";
 import Button from './Button.jsx'
+import React, { useState } from 'react'
 
 const Sidebar = ({onClick}) => {
+  const[selectedType, setSelectedType] = useState('');
+
+  const handleSelectCategory = (type) => {
+    setSelectedCategory(type);
+    onCategorySelect(type);
+  };
   return (
     <div className='sidebar active'>
       <h1>Settings <IoMdSettings size={50}/></h1>
       <h3>Tracking:</h3>
       <div className='section'>
-        <SelectButton text='Pollen' type='radio'/>
-        <SelectButton text='Air Quality' type='radio'/>
-        <SelectButton text='Radiation' type='radio'/>
-        <SelectButton text='Covid-19' type='radio'/>
-        <SelectButton text='Flu' type='radio'/>
+        {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map((type) => (
+          <SelectButton key={type} text={type} type='radio' isSelected={selectedType === type} onClick={() => handleSelectType(type)}/>
+        ))}
       </div>
       <h3>Vulnerabilities:</h3>
       <div className='section'>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import Header from './components/Header.jsx';
 import Map from './components/Map.jsx';

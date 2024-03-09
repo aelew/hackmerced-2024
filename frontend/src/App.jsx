@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Header from './Header.jsx'
-import './App.css'
+import Header from './Header.jsx';
+import Map from './components/Map.jsx';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Header/>
+      <Header />
+      <div className="container">
+        <Map />
+        {/* right sidebar will go here */}
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

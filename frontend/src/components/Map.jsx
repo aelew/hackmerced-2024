@@ -20,7 +20,7 @@ export default function Map() {
 
   const [map, setMap] = useState(null);
 
-  const onLoad = useCallback(function callback(map) {
+  const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map);

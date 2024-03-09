@@ -1,24 +1,25 @@
-import Form from './Form.jsx'
-import Info from './Info.jsx'
+import SelectButton from './SelectButton.jsx'
 import QualitySlider from './QualitySlider.jsx'
+import { IoMdSettings } from "react-icons/io";
+import Button from './Button.jsx'
 
-const Sidebar = () => {
+const Sidebar = ({onClick}) => {
   return (
     <div className='sidebar active'>
-      <h1>Settings</h1>
+      <h1>Settings <IoMdSettings size={50}/></h1>
       <h3>Tracking:</h3>
       <div className='section'>
-        <Form text='Pollen'/>
-        <Form text='Air Quality'/>
-        <Form text='Radiation'/>
-        <Form text='Covid-19'/>
-        <Form text='Flu'/>
+        <SelectButton text='Pollen' type='radio'/>
+        <SelectButton text='Air Quality' type='radio'/>
+        <SelectButton text='Radiation' type='radio'/>
+        <SelectButton text='Covid-19' type='radio'/>
+        <SelectButton text='Flu' type='radio'/>
       </div>
       <h3>Vulnerabilities:</h3>
       <div className='section'>
-        <Form text='Allergy'/>
-        <Form text='Respiratory'/>
-        <Form text='Immune System'/>
+        <SelectButton text='Allergy' type='checkbox'/>
+        <SelectButton text='Respiratory' type='checkbox'/>
+        <SelectButton text='Immune System' type='checkbox'/>
       </div>
       <h3>Personal Tolerances:</h3>
       <div className='section'>
@@ -28,14 +29,7 @@ const Sidebar = () => {
         <QualitySlider text='Covid-19'/>
         <QualitySlider text='Flu'/>
       </div>
-      <h3>Summary:</h3>
-      <div className="section">
-        <Info id = 'Pollen' outline = 'Air pollen concentration ' data = '5 ppm'/>
-        <Info id = 'Radiation' outline = 'Radiation concentration ' data = '5% above healthy limit'/>
-        <Info id = 'Air Quality' outline = 'Air Quality at this current time for your location is ' data = 'Bad'/>
-        <Info id = 'Covid-19' outline = 'Number of reported Covid-19 cases at this current time for your location is ' data = '10'/>
-        <Info id = 'Flu' outline = 'Number of reported Flu cases at this current time for your location is ' data = '25'/>
-      </div>
+      <Button text='Calculate' onClick = {onClick}/>
     </div>
   )
 }

@@ -9,8 +9,8 @@ body{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
+
 
 main {
   display: flex;
@@ -38,7 +38,7 @@ main {
 
 .sidebar{
   position: absolute;
-  height: 89vh;
+  height: 80vh;
   background-color: rgb(227, 223, 215);
   width: 20%;
   color: rgb(46, 46, 46);
@@ -51,14 +51,20 @@ main {
   overflow-y: auto;
 }
 
+
 .sidebar.active{
   right: 0;
 }
 
 .sidebar h1{
+  width: 70%;
   padding: 50px 0;
   color: rgb(43, 42, 42);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 
 .section{
   display: flex;
@@ -66,8 +72,8 @@ main {
   align-items: start;
   justify-content: space-between;
   width: 100%;
-  padding-left: 50px;
-  padding-top: 20px;
+  padding: 20px 0px 0 50px;
+  margin-bottom: 20px;
 }
 
 .sidebar h3{
@@ -86,6 +92,10 @@ main {
   font-size: 16px;
   width: 80%;
   height: 25px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 
@@ -147,11 +157,30 @@ main {
   transform: rotate(45deg);
 }
 
-.info{
-  font-size: 14px;
-}
-
 .slider-title{
   text-align: center;
   font-weight: 600;
+}
+
+.button {
+  background-color: rgb(218, 125, 125);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  margin: 20px 0 5px 0;
+  cursor: pointer;
+}
+
+.button p{
+  padding: 10px 50px 10px 50px;
+}
+
+.summary-card{
+  height: 600px;
+  width: 96%;
+  background-color: #eee;
+  border-radius: 50px;
+  margin-left: 2%;
 }

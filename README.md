@@ -1,1 +1,3 @@
-# hackmerced-2024
+# ⚕️ Mapnosis - HackMerced IX
+
+Live demo available here: https://mapnosis.co

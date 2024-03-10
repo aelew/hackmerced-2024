@@ -20,10 +20,7 @@ const Sidebar = ({ displaySummary, setMap }) => {
 
   const [tolerance, setTolerance] = useState({
     pollenTolerance: 25,
-    airQualityTolerance: 25,
-    radiationTolerance: 25,
-    covidTolerance: 25,
-    fluTolerance: 25
+    airQualityTolerance: 25
   });
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();

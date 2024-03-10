@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect, useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
 
 import { useAppContext } from '../AppContext.js';
+import { getApiBaseUrl } from '../lib/utils';
 import Button from './Button.jsx';
 import SelectButton from './SelectButton.jsx';
 import ToleranceSlider from './ToleranceSlider.jsx';
@@ -23,6 +25,27 @@ const Sidebar = ({ displaySummary, setMap }) => {
     covidTolerance: 25,
     fluTolerance: 25
   });
+
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      getAccessTokenSilently({
+        authorizationParams: {
+          audience: 'https://mapnosis.co/api/'
+        }
+      }).then((accessToken) => {
+        fetch(`${getApiBaseUrl()}/settings`, {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error('Error:', error));
+      });
+    } else {
+      console.log('User is not authenticated, skipping settings fetch');
+    }
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   return (
     <div className="sidebar active">

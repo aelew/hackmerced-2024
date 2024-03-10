@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Card from './Card.jsx';
 
-const Summary = () => {
+const Summary = ({ summaryRef }) => {
   const [safe, setSafety] = useState(true);
   const [status, setStatus] = useState([
     'red',
@@ -12,7 +12,7 @@ const Summary = () => {
     'green'
   ]);
   return (
-    <div className="summary-card">
+    <div className="summary-card" ref={summaryRef}>
       <h1>Summary</h1>
       <div className="grid">
         <div className={'card ' + status[0]}>

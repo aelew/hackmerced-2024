@@ -1,7 +1,10 @@
+import { Auth0Provider } from '@auth0/auth0-react';
+import { APIProvider } from '@vis.gl/react-google-maps';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import App from './App.jsx';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { AppContextProvider } from './components/AppContextProvider.jsx';
 
 import './index.css';
 
@@ -12,7 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{ redirect_uri: window.location.origin }}
     >
-      <App />
+      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+        <AppContextProvider>
+          <App />
+        </AppContextProvider>
+      </APIProvider>
     </Auth0Provider>
   </React.StrictMode>
 );

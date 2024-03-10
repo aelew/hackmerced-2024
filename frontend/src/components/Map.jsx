@@ -1,50 +1,64 @@
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { useCallback, useState } from 'react';
-
-
-const containerStyle = {
-  width: '100%',
-  height: '80vh',
-  borderRadius: '0.5rem'
-};
-
-const center = {
-  lat: 37.3647,
-  lng: -120.4241
-};
-
-export default function Map() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-  });
-
-  const [map, setMap] = useState(null);
-  const [heatMap, setHeatMap] = useState(null);
-
-  const onLoad = useCallback((map) => {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const onUnmount = useCallback(() => {
-    setMap(null);
-  }, []);
-
-  if (!isLoaded) {
-    return <p>Loading map...</p>;
-  }
-
-  return (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={10}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-    >
-      {/* Child components, such as markers, info windows, etc. */}
-    </GoogleMap>
+import {
+    AdvancedMarker,
+    ControlPosition,
+    Map as GoogleMap,
+    InfoWindow,
+    MapControl,
+    Marker,
+    useAdvancedMarkerRef,
+    useMap
+  } from '@vis.gl/react-google-maps';
+  import { useEffect, useState } from 'react';
+  
+  import { useAppContext } from '../AppContext';
+  
+  const defaultPosition = {
+    lat: 37.3647,
+    lng: -120.4241
+  };
+  
+  export default function Map({pollenMapState}) {
+    const map = useMap();
+    const { place } = useAppContext();
+  
+    // for our UC merced marker
+    const [infowindowOpen, setInfowindowOpen] = useState(true);
+    const [markerRef, marker] = useAdvancedMarkerRef();
+    return (
+    
+    <div className="map-container">
+      <GoogleMap
+        mapId="e539c9b65757ae2"
+        className="map"
+        defaultZoom={10}
+        fullscreenControl={false}
+        streetViewControl={false}
+        defaultCenter={defaultPosition}
+      >
+        {/* Child components, such as markers, info windows, etc. go in here */}
+        <Marker position={defaultPosition} />
+        <MapControl position={ControlPosition.TOP_RIGHT}>
+          {place && (
+            <div className="place-card">
+              <h1>{place.name}</h1>
+              <p>{place.formatted_address}</p>
+            </div>
+          )}
+        </MapControl>
+        <AdvancedMarker
+          ref={markerRef}
+          position={defaultPosition}
+          onClick={() => setInfowindowOpen(true)}
+        />
+        {infowindowOpen && (
+          <InfoWindow
+            anchor={marker}
+            onCloseClick={() => setInfowindowOpen(false)}
+          >
+            UC Merced
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    </div>
   );
 }

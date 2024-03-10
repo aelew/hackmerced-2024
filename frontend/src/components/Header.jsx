@@ -1,8 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import Search from './Search.jsx';
+
+import menu from '../assets/menu.png';
 import person from '../assets/person-icon.png';
 import search from '../assets/search.png';
-import menu from '../assets/menu.png';
+import Search from './Search.jsx';
 
 const Header = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();

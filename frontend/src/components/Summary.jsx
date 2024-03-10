@@ -83,7 +83,7 @@ const Summary = ({ summaryRef, settings }) => {
             }
             text = {
               (settings.tolerances.airQualityTolerance<airQualityIndexes[0].aqi 
-                && 100/settings.tolerances.pollenTolerance <= pollenForecast[0].pollenTypeInfo[1].indexInfo.value
+                && (settings.tolerances.pollenTolerance/25) >= pollenForecast[0].pollenTypeInfo[1].indexInfo.value
                 && !(settings.vulnerabilities.allergy && pollenForecast[0].pollenTypeInfo[1].indexInfo.value>2)
                 && !(settings.vulnerabilities.respiratory && airQualityIndexes[0].aqi<50)
                 && !(settings.vulnerabilities.immuneSystem && airQualityIndexes[0].aqi<60&&pollenForecast[0].pollenTypeInfo[1].indexInfo.value>=2)

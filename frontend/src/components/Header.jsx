@@ -10,7 +10,7 @@ const Header = () => {
       <div className="header">
         <div className="header-logo">
           <TbHealthRecognition size={32} />
-          <h1>Health Map</h1>
+          <h1>Mapnosis</h1>
         </div>
         <Search />
         <nav className="nav-bar">

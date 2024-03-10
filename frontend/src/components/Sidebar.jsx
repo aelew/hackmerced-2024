@@ -7,13 +7,13 @@ import SelectButton from './SelectButton.jsx';
 
 const Sidebar = ({ displaySummary, setMap }) => {
   const [selectedType, setSelectedType] = useState('');
-  const[profile, setProfile] = useState({
-    userName:String, 
+  const [profile, setProfile] = useState({
+    userName: String
   });
   const [vulnerabilities, setVulnerabilities] = useState({
     allergy: Boolean,
     respiratory: Boolean,
-    immuneSystem: Boolean,
+    immuneSystem: Boolean
   });
 
   const [tolerance, setTolerance] = useState({
@@ -21,7 +21,7 @@ const Sidebar = ({ displaySummary, setMap }) => {
     airQualityTolerance: Number,
     radiationTolerance: Number,
     covidTolerance: Number,
-    fluTolerance: Number,
+    fluTolerance: Number
   });
   const handleSelectedType = (type) => {
     setSelectedType(type);

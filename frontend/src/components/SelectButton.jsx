@@ -1,20 +1,16 @@
 const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
   return (
-    <label 
-    className="container"
-    onClick = {() => {
-      
-      if({text}.text === 'Pollen'){
-        setMap('Pollen')
-      }
-      else if ({text}.text === 'Air Quality'){
-        setMap('Air Quality')
-      }
-
-      else{
-        setMap('default')
-      }
-    }}
+    <label
+      className="container"
+      onClick={() => {
+        if ({ text }.text === 'Pollen') {
+          setMap('Pollen');
+        } else if ({ text }.text === 'Air Quality') {
+          setMap('Air Quality');
+        } else {
+          setMap('default');
+        }
+      }}
     >
       {text}
       <input

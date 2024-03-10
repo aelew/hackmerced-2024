@@ -10,32 +10,15 @@ import Summary from './components/Summary.jsx';
 import './App.css';
 
 function App() {
-  const [summaryInfo, setSummaryInfo] = useState(
-    [
-      {
-        allergy: false,
-        respiratory: false,
-        immuneSystem: false
-      },
-      {
-        pollenTolerance: 25,
-        airQualityTolerance: 25,
-        radiationTolerance: 25,
-        covidTolerance: 25,
-        fluTolerance: 25,
-      }
-    ]);
+  const [settings, setSettings] = useState();
   const [showSummary, setShowSummary] = useState(false);
   const [currentMap, setCurrentMap] = useState('default');
-  
+
   const summaryRef = useRef();
 
   const displaySummary = (vulnerabilities, tolerances) => {
+    setSettings({ vulnerabilities, tolerances });
     setShowSummary(true);
-    setSummaryInfo(summaryInfo[0] = vulnerabilities)
-    setSummaryInfo(summaryInfo[1] = tolerances)
-
-  
     // setTimeout "next tick" hack
     setTimeout(() => {
       summaryRef.current.scrollIntoView({
@@ -57,9 +40,7 @@ function App() {
           setMap={setCurrentMap}
         />
       </main>
-      {showSummary && (
-        <Summary summaryRef={summaryRef} summarInfo = {summaryInfo}/>
-      )}
+      {showSummary && <Summary summaryRef={summaryRef} settings={settings} />}
     </>
   );
 }

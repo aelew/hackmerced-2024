@@ -270,7 +270,7 @@ main {
 }
 
 .summary-card {
-  height: 600px;
+  height: 300px;
   width: 98%;
   margin-left: 1%;
   background-color: rgb(227, 223, 215);
@@ -285,7 +285,7 @@ main {
 }
 
 .grid {
-  margin: 50px 0 0 5%;
+  margin: 25px 0 0 5%;
 
   width: 90%;
   height: 100%;

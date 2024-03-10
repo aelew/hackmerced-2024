@@ -39,7 +39,10 @@ export default function PlaceCard() {
       url.searchParams.set('days', 5);
       fetch(url)
         .then((res) => res.json())
-        .then((data) => setPollenForecast(data.dailyInfo))
+        .then((data) => {
+          if (data.error) return;
+          setPollenForecast(data.dailyInfo);
+        })
         .catch((err) => console.error('failed to fetch pollen forecast:', err));
     }
   }, [place, setAirQualityIndexes, setPollenForecast]);
@@ -100,68 +103,74 @@ export default function PlaceCard() {
           ))}
         </div>
       </div>
-      <div className="place-card-section">
-        <div>
-          <h2>Pollen Forecast</h2>
-          <p>Daily pollen information for the next 5 days</p>
-        </div>
-        <div className="place-card-data">
-          {pollenForecast.map((forecast) => (
-            <div
-              key={`${forecast.date.year}+${forecast.date.month}+${forecast.date.day}`}
-              className="pollen-forecast-entry"
-            >
-              <h3 style={{ fontSize: '1.125rem' }}>
-                {forecast.date.month}/{forecast.date.day}/{forecast.date.year}
-              </h3>
-              <div className="place-card-section-data">
-                {forecast.pollenTypeInfo.map((pollenType) => (
-                  <div className="place-sub-card" key={pollenType.code}>
-                    <div className="place-sub-card-header">
-                      <strong>{pollenType.displayName}</strong>
-                      {pollenType.inSeason ? (
-                        <span style={{ color: '#f59e0b' }}>In season</span>
-                      ) : (
-                        <span style={{ color: '#71717a' }}>Not in season</span>
+      {pollenForecast.length > 0 && (
+        <div className="place-card-section">
+          <div>
+            <h2>Pollen Forecast</h2>
+            <p>Daily pollen information for the next 5 days</p>
+          </div>
+          <div className="place-card-data">
+            {pollenForecast.map((forecast) => (
+              <div
+                key={`${forecast.date.year}+${forecast.date.month}+${forecast.date.day}`}
+                className="pollen-forecast-entry"
+              >
+                <h3 style={{ fontSize: '1.125rem' }}>
+                  {forecast.date.month}/{forecast.date.day}/{forecast.date.year}
+                </h3>
+                <div className="place-card-section-data">
+                  {forecast.pollenTypeInfo.map((pollenType) => (
+                    <div className="place-sub-card" key={pollenType.code}>
+                      <div className="place-sub-card-header">
+                        <strong>{pollenType.displayName}</strong>
+                        {pollenType.inSeason ? (
+                          <span style={{ color: '#f59e0b' }}>In season</span>
+                        ) : (
+                          <span style={{ color: '#71717a' }}>
+                            Not in season
+                          </span>
+                        )}
+                      </div>
+                      {pollenType.healthRecommendations?.map(
+                        (recommendation) => (
+                          <p key={recommendation}>{recommendation}</p>
+                        )
                       )}
-                    </div>
-                    {pollenType.healthRecommendations?.map((recommendation) => (
-                      <p key={recommendation}>{recommendation}</p>
-                    ))}
-                    {pollenType.indexInfo && (
-                      <div>
-                        <div
-                          style={{
-                            alignItems: 'center',
-                            display: 'flex',
-                            gap: '0.25rem'
-                          }}
-                        >
-                          <strong>
-                            {pollenType.indexInfo.displayName} (
-                            {pollenType.indexInfo.code}):
-                          </strong>{' '}
-                          {pollenType.indexInfo.value} -{' '}
-                          {pollenType.indexInfo.category}{' '}
+                      {pollenType.indexInfo && (
+                        <div>
                           <div
                             style={{
-                              backgroundColor: `rgb(0, ${pollenType.indexInfo.color.green * 255}, ${pollenType.indexInfo.color.blue * 255})`,
-                              borderRadius: '0.25rem',
-                              height: '16px',
-                              width: '16px'
+                              alignItems: 'center',
+                              display: 'flex',
+                              gap: '0.25rem'
                             }}
-                          />
+                          >
+                            <strong>
+                              {pollenType.indexInfo.displayName} (
+                              {pollenType.indexInfo.code}):
+                            </strong>{' '}
+                            {pollenType.indexInfo.value} -{' '}
+                            {pollenType.indexInfo.category}{' '}
+                            <div
+                              style={{
+                                backgroundColor: `rgb(0, ${pollenType.indexInfo.color.green * 255}, ${pollenType.indexInfo.color.blue * 255})`,
+                                borderRadius: '0.25rem',
+                                height: '16px',
+                                width: '16px'
+                              }}
+                            />
+                          </div>
+                          <p>{pollenType.indexInfo.indexDescription}</p>
                         </div>
-                        <p>{pollenType.indexInfo.indexDescription}</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

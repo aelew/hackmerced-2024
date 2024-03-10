@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, displaySummary}) => {
   return (
     <div
       className="button"
       onClick={() => {
-        onClick();
+        displaySummary();
       }}
     >
       <p>{text}</p>

@@ -5,12 +5,12 @@ import Button from './Button.jsx';
 import QualitySlider from './QualitySlider.jsx';
 import SelectButton from './SelectButton.jsx';
 
-const Sidebar = ({ onClick }) => {
+const Sidebar = ({ displaySummary, setMap }) => {
   const [selectedType, setSelectedType] = useState('');
 
   const handleSelectedType = (type) => {
     setSelectedType(type);
-    onClick(type);
+    displaySummary(type);
   };
   return (
     <div className="sidebar active">
@@ -28,6 +28,7 @@ const Sidebar = ({ onClick }) => {
               type="radio"
               isSelected={selectedType === type}
               onChange={() => handleSelectedType(type)}
+              setMap={setMap}
             />
           )
         )}
@@ -46,7 +47,7 @@ const Sidebar = ({ onClick }) => {
         <QualitySlider text="Covid-19" />
         <QualitySlider text="Flu" />
       </div>
-      <Button text="Calculate" onClick={onClick} />
+      <Button text="Calculate" displaySummary={displaySummary} />
     </div>
   );
 };

@@ -39,8 +39,12 @@ const Sidebar = ({ displaySummary, setMap }) => {
           headers: { Authorization: `Bearer ${accessToken}` }
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((error) => console.error('Error:', error));
+          .then((res) => {
+            if (res.data) {
+              setVulnerabilities(res.data.vulnerabilities);
+              setTolerance(res.data.tolerances);
+            }
+          });
       });
     } else {
       console.log('User is not authenticated, skipping settings fetch');
@@ -77,6 +81,7 @@ const Sidebar = ({ displaySummary, setMap }) => {
             key={key}
             text={label}
             type="checkbox"
+            isSelected={vulnerabilities[key]}
             onChange={(e) =>
               setVulnerabilities({
                 ...vulnerabilities,
@@ -90,14 +95,12 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <div className="section" style={{ gap: '1rem' }}>
         {[
           { label: 'Pollen', key: 'pollenTolerance' },
-          { label: 'Air Quality', key: 'airQualityTolerance' },
-          { label: 'Radiation', key: 'radiationTolerance' },
-          { label: 'COVID-19', key: 'covidTolerance' },
-          { label: 'Flu', key: 'fluTolerance' }
+          { label: 'Air Quality', key: 'airQualityTolerance' }
         ].map(({ label, key }) => (
           <ToleranceSlider
             key={key}
             text={label}
+            value={tolerance[key]}
             type="checkbox"
             onChange={(value) =>
               setTolerance({

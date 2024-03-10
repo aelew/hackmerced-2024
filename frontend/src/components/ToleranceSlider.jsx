@@ -28,7 +28,7 @@ function valuetext(value) {
   return `${value}`;
 }
 
-export default function ToleranceSlider({ text, onChange }) {
+export default function ToleranceSlider({ text, value, onChange }) {
   return (
     <Box sx={{ width: 225 }}>
       <div className="slider-title">{text}</div>
@@ -39,6 +39,7 @@ export default function ToleranceSlider({ text, onChange }) {
         step={25}
         valueLabelDisplay="auto"
         marks={marks}
+        value={value}
         onChange={(_, value) => onChange(value)}
       />
     </Box>

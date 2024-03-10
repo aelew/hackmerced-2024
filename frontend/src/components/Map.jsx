@@ -27,12 +27,14 @@ export default function Map() {
 
   useEffect(() => {
     if (map) {
-      const imageMapType = new window.google.maps.ImageMapType({
+      const pollenHeatmap = new window.google.maps.ImageMapType({
+        name: 'Pollen Heatmap',
+        opacity: 0.25,
         tileSize: new window.google.maps.Size(256, 256),
         getTileUrl: (coord, zoom) =>
           `https://pollen.googleapis.com/v1/mapTypes/TREE_UPI/heatmapTiles/${zoom}/${coord.x}/${coord.y}?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
       });
-      map.overlayMapTypes.push(imageMapType);
+      map.overlayMapTypes.push(pollenHeatmap);
     }
   }, [map]);
 
@@ -43,6 +45,7 @@ export default function Map() {
         className="map"
         defaultZoom={10}
         fullscreenControl={false}
+        streetViewControl={false}
         defaultCenter={defaultPosition}
       >
         {/* Child components, such as markers, info windows, etc. go in here */}

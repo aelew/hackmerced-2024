@@ -15,13 +15,12 @@ const Summary = ({ summaryRef, settings }) => {
 
   const { place, airQualityIndexes, pollenForecast } = useAppContext();
 
-  const data = [25, 50, 25, 0, 100];
-
   // check your browser console to see the data
   console.log('settings:', settings);
   console.log('place:', place);
   console.log('airQualityIndexes:', airQualityIndexes);
   console.log('pollenForecast:', pollenForecast);
+
 
   return (
     <div className="summary-card" ref={summaryRef}>
@@ -30,30 +29,35 @@ const Summary = ({ summaryRef, settings }) => {
         <div
           className={
             'card ' +
-            (data[0] > 75
+            (pollenForecast[0].pollenTypeInfo[1].indexInfo.value === 5
               ? 'red'
-              : data[0] > 50
+              : pollenForecast[0].pollenTypeInfo[1].indexInfo.value === 4
                 ? 'orange'
-                : data[0] > 25
+                : pollenForecast[0].pollenTypeInfo[1].indexInfo.value === 3
                   ? 'yellow'
-                  : 'green')
+                  : pollenForecast[0].pollenTypeInfo[1].indexInfo.value === 2
+                    ? 'yellowgreen'
+                    : pollenForecast[0].pollenTypeInfo[1].indexInfo.value === 1
+                      ? 'green'
+                      : '')
           }
         >
           <Card
             icon="🌻 Pollen Levels"
             text={
-              'Pollen levels are very high in your area currently! Be warry of allergens and consider taking allergy medication. '
+              `Pollen levels are ${pollenForecast[0].pollenTypeInfo[1].indexInfo.category} in your area currently! 
+              ${pollenForecast[0].pollenTypeInfo[1].indexInfo.value > 2 ?  'Be warry of allergens and consider taking allergy medication.': 'Allergies should be of no concern today.'}`
             }
           />
         </div>
         <div
           className={
             'card ' +
-            (data[1] > 75
+            (airQualityIndexes[0].aqi < 20
               ? 'red'
-              : data[1] > 50
+              : airQualityIndexes[0].aqi < 40
                 ? 'orange'
-                : data[1] > 25
+                : airQualityIndexes[0].aqi < 60
                   ? 'yellow'
                   : 'green')
           }
@@ -61,73 +65,30 @@ const Summary = ({ summaryRef, settings }) => {
           <Card
             icon="🏭 Air Quality"
             text={
-              'Air Quality is moderately contaminated in your area currently! Consider bringing a mask and avoid staying out too long if suffering from respiratory issues.'
+              `Your area has ${airQualityIndexes[0].category}! 
+              ${airQualityIndexes[0].aqi<60 ? 'Consider bringing a mask and avoid staying out too long if suffering from respiratory issues.' 
+              : 'Air quality is not of concern and unless other circumstances dictate otherwise, enjoy the sun!'}`
             }
           />
         </div>
-        <div
-          className={
-            'card ' +
-            (data[2] > 75
-              ? 'red'
-              : data[2] > 50
-                ? 'orange'
-                : data[2] > 25
-                  ? 'yellow'
-                  : 'green')
-          }
-        >
-          <Card
-            icon="☢️ Radiation Levels"
-            text={
-              'Radiation levels are low in your area currently! Current conditions are completely safe in terms of Radiation.'
-            }
-          />
-        </div>
-        <div
-          className={
-            'card ' +
-            (data[3] > 75
-              ? 'red'
-              : data[3] > 50
-                ? 'orange'
-                : data[3] > 25
-                  ? 'yellow'
-                  : 'green')
-          }
-        >
-          <Card
-            icon="🦠 COVID-19 Cases"
-            text={
-              'There are currently 20 known cases of COVID-19 in your area. Consider wearing a mask and practicing moderate social distancing.'
-            }
-          />
-        </div>
-        <div
-          className={
-            'card ' +
-            (data[4] > 75
-              ? 'red'
-              : data[4] > 50
-                ? 'orange'
-                : data[4] > 25
-                  ? 'yellow'
-                  : 'green')
-          }
-        >
-          <Card
-            icon="🤧 Flu Cases"
-            text={
-              'There are currently no known cases of the Flu in your area! Despite a low risk of catching the Flu practice common sense hygeine regardless. '
-            }
-          />{' '}
-        </div>
-        <div className="card">
+        <div className={'card ' + ((settings.tolerances.airQualityTolerance<airQualityIndexes[0].aqi 
+                && 100/settings.tolerances.pollenTolerance <= pollenForecast[0].pollenTypeInfo[1].indexInfo.value
+                && !(settings.vulnerabilities.allergy && pollenForecast[0].pollenTypeInfo[1].indexInfo.value>2)
+                && !(settings.vulnerabilities.respiratory && airQualityIndexes[0].aqi<50)
+                && !(settings.vulnerabilities.immuneSystem && airQualityIndexes[0].aqi<60&&pollenForecast[0].pollenTypeInfo[1].indexInfo.value>=2)
+                ) ? 'green' : 'red')}>
           <Card
             icon={
-              safe
-                ? '✅ It is Safe To Go Out!'
-                : '❌ It is not recommended to go out!'
+              '✅or❌'
+            }
+            text = {
+              (settings.tolerances.airQualityTolerance<airQualityIndexes[0].aqi 
+                && 100/settings.tolerances.pollenTolerance <= pollenForecast[0].pollenTypeInfo[1].indexInfo.value
+                && !(settings.vulnerabilities.allergy && pollenForecast[0].pollenTypeInfo[1].indexInfo.value>2)
+                && !(settings.vulnerabilities.respiratory && airQualityIndexes[0].aqi<50)
+                && !(settings.vulnerabilities.immuneSystem && airQualityIndexes[0].aqi<60&&pollenForecast[0].pollenTypeInfo[1].indexInfo.value>=2)
+              ) ? 'Considering the data provided, you do not need to worry about respiratory issues or allergies.' 
+                : 'Considering the data provided, we recommend you stay in doors.'
             }
           />
         </div>

@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-
 import 'dotenv/config';
 
 const app = express();
@@ -26,6 +25,11 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 app.use(express.json()); // for parsing
+
+// test connection
+app.get('/', (req, res) => {
+  res.send('Welcome to my Express server!');
+});
 
 // Example route to create a new user
 app.post('/api/users', async (req, res) => {

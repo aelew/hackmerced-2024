@@ -1,5 +1,10 @@
+import cors from 'cors';
 import express from 'express';
+import { auth } from 'express-oauth2-jwt-bearer';
 import mongoose from 'mongoose';
+
+import UserSettings from './UserSettings.js';
+
 import 'dotenv/config';
 
 const app = express();
@@ -15,46 +20,40 @@ db.once('open', function () {
   console.log('Connected to MongoDB database');
 });
 
-// Template values
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: String
-  // add more fields here
+const jwtCheck = auth({
+  audience: 'https://mapnosis.co/api/',
+  issuerBaseURL: `https://${process.env.VITE_AUTH0_DOMAIN}/`,
+  tokenSigningAlg: 'RS256'
 });
 
-const User = mongoose.model('User', userSchema);
+// cors fix in dev
+app.use(cors({ origin: 'http://localhost:5173' }));
 
-app.use(express.json()); // for parsing
+// for parsing
+app.use(express.json());
 
-// test connection
-app.get('/', (req, res) => {
-  res.send('Welcome to my Express server!');
+app.get('/api', (_req, res) => {
+  res.send('It works!');
 });
 
-// Example route to create a new user
-app.post('/api/users', async (req, res) => {
-  try {
-    const newUser = new User(req.body);
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
+// all routes beyond this line are protected
+app.use(jwtCheck);
+
+app.get('/api/settings', async (req, res) => {
+  const userId = req.auth.payload.sub;
+  const data = await UserSettings.findOne({ auth0Id: userId });
+  res.json({ success: true, data });
 });
 
-// Example route to get all users
-app.get('/api/users', async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Default route for '/api'
-app.get('/api', (req, res) => {
-  res.send('It works! MongoDB integrated.');
+app.post('/api/settings', async (req, res) => {
+  const userId = req.auth.payload.sub;
+  console.log(req.body);
+  await UserSettings.findOneAndUpdate(
+    { auth0Id: userId },
+    { ...req.body, auth0Id: userId },
+    { upsert: true }
+  );
+  res.json({ success: true });
 });
 
 // Start the Express server

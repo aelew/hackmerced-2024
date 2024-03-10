@@ -32,7 +32,11 @@ const Header = () => {
                   ? logout({
                       logoutParams: { returnTo: window.location.origin }
                     })
-                  : loginWithRedirect()
+                  : loginWithRedirect({
+                      authorizationParams: {
+                        audience: 'https://mapnosis.co/api/'
+                      }
+                    })
               }
               style={{
                 backgroundColor: 'transparent',

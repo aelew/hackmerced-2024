@@ -15,6 +15,7 @@ const Summary = ({ summaryRef, settings }) => {
 
   const { place, airQualityIndexes, pollenForecast } = useAppContext();
 
+  const data = [25, 50, 25, 0, 100];
 
   // check your browser console to see the data
   console.log('settings:', settings);

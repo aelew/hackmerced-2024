@@ -53,7 +53,12 @@ export default function Search() {
   return (
     <div className="search-bar">
       <input type="text" placeholder="Enter a location" ref={inputRef} />
-      <input type="image" src={search} width="25px" />
+      <input
+        type="image"
+        src={search}
+        width="25px"
+        style={{ filter: 'invert(1)' }}
+      />
     </div>
   );
 }

@@ -28,9 +28,9 @@ function valuetext(value) {
   return `${value}`;
 }
 
-export default function DiscreteSliderMarks({ text }) {
+export default function ToleranceSlider({ text, onChange }) {
   return (
-    <Box sx={{ width: 200 }}>
+    <Box sx={{ width: 225 }}>
       <div className="slider-title">{text}</div>
       <Slider
         aria-label="Custom marks"
@@ -39,6 +39,7 @@ export default function DiscreteSliderMarks({ text }) {
         step={25}
         valueLabelDisplay="auto"
         marks={marks}
+        onChange={(_, value) => onChange(value)}
       />
     </Box>
   );

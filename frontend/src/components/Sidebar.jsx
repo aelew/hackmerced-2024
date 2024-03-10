@@ -2,60 +2,93 @@ import React, { useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
 
 import Button from './Button.jsx';
-import QualitySlider from './QualitySlider.jsx';
 import SelectButton from './SelectButton.jsx';
-import Selector from './Selector.jsx';
+import ToleranceSlider from './ToleranceSlider.jsx';
 
 const Sidebar = ({ displaySummary, setMap }) => {
-  const [selectedType, setSelectedType] = useState('');
-  const [profile, setProfile] = useState({
-    userName: String
+  const [selectedType, setSelectedType] = useState('None');
+
+  const [vulnerabilities, setVulnerabilities] = useState({
+    allergy: false,
+    respiratory: false,
+    immuneSystem: false
   });
 
   const [tolerance, setTolerance] = useState({
-    pollenTolerance: Number,
-    airQualityTolerance: Number,
-    radiationTolerance: Number,
-    covidTolerance: Number,
-    fluTolerance: Number
+    pollenTolerance: 25,
+    airQualityTolerance: 25,
+    radiationTolerance: 25,
+    covidTolerance: 25,
+    fluTolerance: 25
   });
-  const handleSelectedType = (type) => {
-    setSelectedType(type);
-  };
+
   return (
     <div className="sidebar active">
       <h1>
         Settings <IoMdSettings size={50} />
       </h1>
-      <h3>Show On Map:</h3>
+      <h3>Show on map</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
-        {['Default', 'Pollen', 'Air Quality', 'Covid-19', 'Flu'].map(
+        {['None', 'Pollen', 'Air Quality', 'Radiation', 'COVID-19', 'Flu'].map(
           (type) => (
             <SelectButton
               key={type}
               text={type}
               type="radio"
               isSelected={selectedType === type}
-              onChange={() => handleSelectedType(type)}
+              onChange={() => setSelectedType(type)}
               setMap={setMap}
             />
           )
         )}
       </div>
-      <h3>Medical Information:</h3>
+      <h3>Vulnerabilities</h3>
       <div className="section">
-        <Selector />
+        {[
+          { label: 'Allergy', key: 'allergy' },
+          { label: 'Respiratory', key: 'respiratory' },
+          { label: 'Immune System', key: 'immuneSystem' }
+        ].map(({ label, key }) => (
+          <SelectButton
+            key={key}
+            text={label}
+            type="checkbox"
+            onChange={(e) =>
+              setVulnerabilities({
+                ...vulnerabilities,
+                [key]: e.currentTarget.checked
+              })
+            }
+          />
+        ))}
       </div>
-      <h3>Personal Tolerances:</h3>
-      <div className="section">
-        <QualitySlider text="Pollen" />
-        <QualitySlider text="Air Quality" />
-        <QualitySlider text="Radiation" />
-        <QualitySlider text="Covid-19" />
-        <QualitySlider text="Flu" />
+      <h3>Personal Tolerances</h3>
+      <div className="section" style={{ gap: '1rem' }}>
+        {[
+          { label: 'Pollen', key: 'pollenTolerance' },
+          { label: 'Air Quality', key: 'airQualityTolerance' },
+          { label: 'Radiation', key: 'radiationTolerance' },
+          { label: 'COVID-19', key: 'covidTolerance' },
+          { label: 'Flu', key: 'fluTolerance' }
+        ].map(({ label, key }) => (
+          <ToleranceSlider
+            key={key}
+            text={label}
+            type="checkbox"
+            onChange={(value) =>
+              setTolerance({
+                ...tolerance,
+                [key]: value
+              })
+            }
+          />
+        ))}
       </div>
-      <Button text="Calculate" displaySummary={displaySummary} />
+      <Button
+        text="Calculate"
+        onClick={() => displaySummary(selectedType, vulnerabilities, tolerance)}
+      />
     </div>
   );
 };

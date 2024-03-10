@@ -3,12 +3,14 @@ const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
     <label
       className={type === 'radio' ? 'container radio': 'container checkbox'}
       onClick={() => {
-        if ({ text }.text === 'Pollen') {
-          setMap('Pollen');
-        } else if ({ text }.text === 'Air Quality') {
-          setMap('Air Quality');
-        } else {
-          setMap('default');
+        if (setMap) {
+          if ({ text }.text === 'Pollen') {
+            setMap('Pollen');
+          } else if ({ text }.text === 'Air Quality') {
+            setMap('Air Quality');
+          } else {
+            setMap('default');
+          }
         }
       }}
     >
@@ -16,8 +18,12 @@ const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
       <input
         type={type}
         checked={isSelected}
-        onChange={() => onChange(text)}
         name={type === 'radio' ? 'trackingSelection' : text}
+        onChange={(e) => {
+          if (onChange) {
+            onChange(e, text);
+          }
+        }}
       />
       <span className={'checkmark'}></span>
     </label>

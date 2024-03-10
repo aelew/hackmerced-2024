@@ -7,8 +7,13 @@ const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
       if({text}.text === 'Pollen'){
         setMap('Pollen')
       }
-      else if ({text}.text === 'Air Quality')
+      else if ({text}.text === 'Air Quality'){
         setMap('Air Quality')
+      }
+
+      else{
+        setMap('default')
+      }
     }}
     >
       {text}

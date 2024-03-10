@@ -1,15 +1,19 @@
 const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
   return (
     <label
-      className={type === 'radio' ? 'container radio': 'container checkbox'}
+      className={type === 'radio' ? 'container radio' : 'container checkbox'}
       onClick={() => {
         if (setMap) {
-          if ({ text }.text === 'Pollen') {
-            setMap('Pollen');
-          } else if ({ text }.text === 'Air Quality') {
-            setMap('Air Quality');
-          } else {
-            setMap('default');
+          switch (text) {
+            case 'Pollen':
+              setMap('Pollen');
+              break;
+            case 'Air Quality':
+              setMap('Air Quality');
+              break;
+            default:
+              setMap('default');
+              break;
           }
         }
       }}

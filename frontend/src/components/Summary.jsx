@@ -67,7 +67,7 @@ const Summary = ({ summaryRef, settings }) => {
             text={
               `Your area has ${airQualityIndexes[0].category}! 
               ${airQualityIndexes[0].aqi<60 ? 'Consider bringing a mask and avoid staying out too long if suffering from respiratory issues.' 
-              : 'Air quality is not of concern and unless other circumstances dictate otherwise, enjoy the sun!'}`
+              : 'Air quality is not of concern.'}`
             }
           />
         </div>
@@ -87,7 +87,7 @@ const Summary = ({ summaryRef, settings }) => {
                 && !(settings.vulnerabilities.allergy && pollenForecast[0].pollenTypeInfo[1].indexInfo.value>2)
                 && !(settings.vulnerabilities.respiratory && airQualityIndexes[0].aqi<50)
                 && !(settings.vulnerabilities.immuneSystem && airQualityIndexes[0].aqi<60&&pollenForecast[0].pollenTypeInfo[1].indexInfo.value>=2)
-              ) ? 'Considering the data provided, you do not need to worry about respiratory issues or allergies.' 
+              ) ? 'Considering the data provided, you do not need to worry about respiratory issues or allergies. Unless other circumstances dictate otherwise, enjoy the sun!' 
                 : 'Considering the data provided, we recommend you stay in doors.'
             }
           />

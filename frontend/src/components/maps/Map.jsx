@@ -25,6 +25,7 @@ export default function Map() {
         mapId="e539c9b65757ae2"
         className="map"
         defaultZoom={10}
+        maxZoom={16}
         fullscreenControl={false}
         streetViewControl={false}
         defaultCenter={defaultPosition}

@@ -14,7 +14,7 @@ function App() {
   const [currentMap, setCurrentMap] = useState('default');
   const summaryRef = useRef();
 
-  const displaySummary = () => {
+  const displaySummary = (selectedType, vulnerabilities, tolerance) => {
     setShowSummary(true);
     // setTimeout "next tick" hack
     setTimeout(() => {
@@ -22,6 +22,10 @@ function App() {
         behavior: 'smooth'
       });
     });
+
+    console.log('selectedType:', selectedType);
+    console.log('vulnerabilities:', vulnerabilities);
+    console.log('tolerance:', tolerance);
   };
 
   return (

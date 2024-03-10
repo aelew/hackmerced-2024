@@ -13,7 +13,7 @@ const Summary = () => {
   ]);
   return (
     <div className="summary-card">
-      <h1>Summary:</h1>
+      <h1>Summary</h1>
       <div className="grid">
         <div className={'card ' + status[0]}>
           <Card

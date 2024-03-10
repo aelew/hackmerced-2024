@@ -86,7 +86,6 @@ main {
   overflow-y: scroll;
 }
 
-
 .sidebar h1 {
   width: 70%;
   padding: 50px 0;
@@ -147,7 +146,7 @@ main {
   background-color: #eee;
 }
 
-.checkmark.radio{
+.checkmark.radio {
   border-radius: 50%;
 }
 
@@ -212,29 +211,22 @@ main {
 
 .summary-card {
   height: 600px;
-  width: 98%;
-  margin-left: 1%;
+  margin: 1rem;
   background-color: rgb(227, 223, 215);
-  border-radius: 50px;
-  border: 10px solid rgb(218, 125, 125);
+  border-radius: 0.5rem;
+  border: 0.5rem solid rgb(218, 125, 125);
   color: rgb(46, 46, 46);
-}
-
-.summary-card h1 {
-  padding-top: 30px;
-  padding-left: 30px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .grid {
-  margin: 50px 0 0 5%;
-
-  width: 90%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  column-gap: 30px;
-  row-gap: 30px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
 }
 
 .card {
@@ -293,6 +285,12 @@ main {
   flex-direction: column;
   overflow-y: auto;
   max-height: 83vh;
+}
+
+.place-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .place-card h1 {

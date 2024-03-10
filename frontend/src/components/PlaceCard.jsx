@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { LuX } from 'react-icons/lu';
 
 import { useAppContext } from '../AppContext';
 
 export default function PlaceCard() {
   const [airQualityIndexes, setAirQualityIndexes] = useState([]);
   const [pollenForecast, setPollenForecast] = useState([]);
-  const { place } = useAppContext();
+  const { place, setPlace } = useAppContext();
 
   useEffect(() => {
     if (place) {
@@ -45,7 +46,20 @@ export default function PlaceCard() {
   return (
     <div className="place-card">
       <div>
-        <h1>{place.name}</h1>
+        <div className="place-card-header">
+          <h1>{place.name}</h1>
+          <button
+            onClick={() => setPlace(null)}
+            style={{
+              backgroundColor: 'transparent',
+              height: 'fit-content',
+              cursor: 'pointer',
+              border: 'none'
+            }}
+          >
+            <LuX size={20} />
+          </button>
+        </div>
         <p>{place.formatted_address}</p>
       </div>
       <div className="place-card-section">

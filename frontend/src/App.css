@@ -287,6 +287,12 @@ main {
   max-height: 83vh;
 }
 
+.place-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .place-card h1 {
   font-size: 1.5rem;
   line-height: 1.5rem;

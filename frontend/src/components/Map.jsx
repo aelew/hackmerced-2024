@@ -17,7 +17,7 @@ import {
     lng: -120.4241
   };
   
-  export default function Map({pollenMapState}) {
+  export default function Map() {
     const map = useMap();
     const { place } = useAppContext();
   

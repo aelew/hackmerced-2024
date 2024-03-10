@@ -17,7 +17,7 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <h1>
         Settings <IoMdSettings size={50} />
       </h1>
-      <h3>Tracking:</h3>
+      <h3>Show On Map:</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
         {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map(

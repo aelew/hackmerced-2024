@@ -286,7 +286,7 @@ main {
   margin: 1.75rem;
   padding: 1rem;
   color: #000;
-  max-width: 384px;
+  width: 384px;
   border-radius: 0.375rem;
   gap: 1rem;
   display: flex;
@@ -306,7 +306,7 @@ main {
   gap: 0.5rem;
 }
 
-.pollen-forecasts {
+.place-card-data {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -318,13 +318,13 @@ main {
   gap: 0.75rem;
 }
 
-.pollen-info {
+.place-card-section-data {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.pollen-type-card {
+.place-sub-card {
   padding: 0.75rem;
   border: 1px solid #000;
   border-radius: 0.5rem;
@@ -333,12 +333,12 @@ main {
     0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.pollen-type-card-header {
+.place-sub-card-header {
   display: flex;
   justify-content: space-between;
 }
 
-.pollen-type-card-header span {
+.place-sub-card-header span {
   font-weight: 500;
 }
 

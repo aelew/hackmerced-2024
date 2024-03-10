@@ -6,6 +6,35 @@
     <title>Mapnosis</title>
   </head>
   <body>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script
+      src="https://mediafiles.botpress.cloud/c551f287-e432-44c5-9ec9-966a73e72cf8/webchat/config.js"
+      defer
+    ></script>
+
+    <script>
+      function handleClick() {
+        console.log('Button clicked!');
+        window.botpressWebChat.sendPayload({
+          type: 'trigger',
+          payload: {
+            myCustomProperty: 'hello'
+          }
+        });
+      }
+
+      const button = document.getElementById('myButton');
+      button.addEventListener('click', handleClick);
+
+      window.botpressWebChat.onEvent(
+        function (event) {
+          if (event.type === 'LIFECYCLE.LOADED') {
+            window.botpressWebChat.sendEvent({ type: 'show' });
+          }
+        },
+        ['LIFECYCLE.LOADED']
+      );
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

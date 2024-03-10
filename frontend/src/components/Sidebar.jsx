@@ -32,18 +32,16 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <h3>Show on map</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
-        {['None', 'Pollen', 'Air Quality', 'Radiation', 'COVID-19', 'Flu'].map(
-          (type) => (
-            <SelectButton
-              key={type}
-              text={type}
-              type="radio"
-              isSelected={selectedType === type}
-              onChange={() => setSelectedType(type)}
-              setMap={setMap}
-            />
-          )
-        )}
+        {['None', 'Pollen', 'Air Quality'].map((type) => (
+          <SelectButton
+            key={type}
+            text={type}
+            type="radio"
+            isSelected={selectedType === type}
+            onChange={() => setSelectedType(type)}
+            setMap={setMap}
+          />
+        ))}
       </div>
       <h3>Vulnerabilities</h3>
       <div className="section">

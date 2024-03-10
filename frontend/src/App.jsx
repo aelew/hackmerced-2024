@@ -40,6 +40,10 @@ function App() {
     }
 
     setShowSummary(true);
+    setSummaryInfo(summaryInfo[0] = vulnerabilities)
+    setSummaryInfo(summaryInfo[1] = tolerances)
+
+  
     // setTimeout "next tick" hack
     setTimeout(() => {
       summaryRef.current.scrollIntoView({

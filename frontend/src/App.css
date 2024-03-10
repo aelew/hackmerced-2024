@@ -16,6 +16,7 @@ main {
   padding: 1rem;
   height: calc(100vh - 4rem);
   justify-content: space-between;
+  justify-content: space-between;
 }
 
 .header-box {
@@ -43,6 +44,10 @@ main {
 .header h1 {
   font-size: 1.5rem;
   letter-spacing: -0.025em;
+}
+
+.header img {
+  cursor: pointer;
 }
 
 .search-bar {
@@ -83,9 +88,13 @@ main {
 .sidebar {
   position: relative;
   height: 100%;
+  position: relative;
+  height: 100%;
   background-color: rgb(227, 223, 215);
   width: 20vw;
+  width: 20vw;
   color: rgb(46, 46, 46);
+  border-radius: 0.5em;
   border-radius: 0.5em;
   display: flex;
   flex-direction: column;
@@ -93,7 +102,9 @@ main {
   align-items: center;
   transition: all 1s;
   overflow-y: scroll;
+  animation: 1s ease-in 0s 1 slideInFromRight;
 }
+
 
 .sidebar h1 {
   width: 100%;
@@ -145,7 +156,7 @@ main {
 }
 
 /* Create a custom checkbox */
-.checkmark {
+.container.checkbox .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -154,7 +165,13 @@ main {
   background-color: #eee;
 }
 
-.checkmark.radio {
+.container.radio .checkmark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
   border-radius: 50%;
 }
 
@@ -163,13 +180,17 @@ main {
   border-radius: 5px;
 }
 
-.container:hover input ~ .checkmark {
+.container:hover input ~ .checkmark, .container.radio :hover input ~ .checkmark{
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container.checkbox input:checked ~ .checkmark {
   background-color: rgb(89, 198, 133);
+}
+
+.container.radio input:checked ~ .checkmark {
+  background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -185,7 +206,16 @@ main {
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container.radio .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.container.checkbox .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -195,6 +225,37 @@ main {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.display-field {
+  height: 100px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.tag{
+  font-size: 12px;
+  background-color: rgb(179, 179, 179);
+  margin: 0;
+  padding: .5em .75em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.tag .remove{
+  margin-left: .5em;
+  height: 12px;
+  width: 12px;
+  background-color: #222222;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slider-title {
@@ -219,22 +280,29 @@ main {
 
 .summary-card {
   height: 600px;
-  margin: 1rem;
+  width: 98%;
+  margin-left: 1%;
   background-color: rgb(227, 223, 215);
-  border-radius: 0.5rem;
-  border: 0.5rem solid rgb(218, 125, 125);
+  border-radius: 50px;
+  border: 10px solid rgb(218, 125, 125);
   color: rgb(46, 46, 46);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+}
+
+.summary-card h1 {
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 .grid {
+  margin: 50px 0 0 5%;
+
+  width: 90%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
 }
 
 .card {
@@ -273,6 +341,7 @@ main {
 }
 
 .map {
+  animation: 1s ease-in 0s 1 slideInFromLeft;
   width: 77vw;
   height: 100%;
   border-radius: 0.5rem;
@@ -286,19 +355,13 @@ main {
   margin: 1.75rem;
   padding: 1rem;
   color: #000;
-  width: 384px;
+  max-width: 384px;
   border-radius: 0.375rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   max-height: 83vh;
-}
-
-.place-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .place-card h1 {
@@ -312,7 +375,7 @@ main {
   gap: 0.5rem;
 }
 
-.place-card-data {
+.pollen-forecasts {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -324,13 +387,13 @@ main {
   gap: 0.75rem;
 }
 
-.place-card-section-data {
+.pollen-info {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.place-sub-card {
+.pollen-type-card {
   padding: 0.75rem;
   border: 1px solid #000;
   border-radius: 0.5rem;
@@ -339,12 +402,12 @@ main {
     0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.place-sub-card-header {
+.pollen-type-card-header {
   display: flex;
   justify-content: space-between;
 }
 
-.place-sub-card-header span {
+.pollen-type-card-header span {
   font-weight: 500;
 }
 
@@ -356,4 +419,22 @@ main {
 /* Google Maps marker popup close button outline fix */
 button.gm-ui-hover-effect {
   outline: none;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    margin-left: 20%;
+  }
+  to {
+    margin-left: 0%;
+  }
 }

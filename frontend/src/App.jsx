@@ -12,6 +12,7 @@ import './App.css';
 function App() {
   const [showSummary, setShowSummary] = useState(false);
   const [currentMap, setCurrentMap] = useState('default');
+  
   const summaryRef = useRef();
 
   const displaySummary = (selectedType, vulnerabilities, tolerance) => {

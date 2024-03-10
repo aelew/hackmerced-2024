@@ -30,7 +30,7 @@ function valuetext(value) {
 
 export default function ToleranceSlider({ text, onChange }) {
   return (
-    <Box sx={{ width: 250 }}>
+    <Box sx={{ width: 225 }}>
       <div className="slider-title">{text}</div>
       <Slider
         aria-label="Custom marks"

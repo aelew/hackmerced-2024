@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
 const UserProfileSchema = new mongoose.Schema({
-  // data fields for the user profile
-  // every user profile will have a username, and a boolean for each of the following fields
+ 
   auth0Id: { 
     type: String,
-    required: true,
-    unique: true,
+    required: true, //not needed?
+    unique: true, // not needed?
   },
   vulnerabilities:{
     allergy: Boolean,

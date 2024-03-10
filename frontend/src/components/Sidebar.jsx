@@ -17,7 +17,6 @@ const Sidebar = ({ displaySummary, setMap }) => {
   const [tolerance, setTolerance] = useState({
     pollenTolerance: 25,
     airQualityTolerance: 25,
-    radiationTolerance: 25,
     covidTolerance: 25,
     fluTolerance: 25
   });
@@ -30,18 +29,16 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <h3>Show on map</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
-        {['None', 'Pollen', 'Air Quality', 'Radiation', 'COVID-19', 'Flu'].map(
-          (type) => (
-            <SelectButton
-              key={type}
-              text={type}
-              type="radio"
-              isSelected={selectedType === type}
-              onChange={() => setSelectedType(type)}
-              setMap={setMap}
-            />
-          )
-        )}
+        {['None', 'Pollen', 'Air Quality', 'COVID-19', 'Flu'].map((type) => (
+          <SelectButton
+            key={type}
+            text={type}
+            type="radio"
+            isSelected={selectedType === type}
+            onChange={() => setSelectedType(type)}
+            setMap={setMap}
+          />
+        ))}
       </div>
       <h3>Vulnerabilities</h3>
       <div className="section">
@@ -68,7 +65,6 @@ const Sidebar = ({ displaySummary, setMap }) => {
         {[
           { label: 'Pollen', key: 'pollenTolerance' },
           { label: 'Air Quality', key: 'airQualityTolerance' },
-          { label: 'Radiation', key: 'radiationTolerance' },
           { label: 'COVID-19', key: 'covidTolerance' },
           { label: 'Flu', key: 'fluTolerance' }
         ].map(({ label, key }) => (

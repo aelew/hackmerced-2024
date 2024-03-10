@@ -32,7 +32,7 @@ const Summary = ({ summaryRef }) => {
         </div>
         <div className={'card ' + status[2]}>
           <Card
-            icon="☢️ Radiation Levels"
+            icon="☢️ Radiation Levels (remove)"
             text={
               'Radiation levels are low in your area currently! Current conditions are completely safe in terms of Radiation.'
             }

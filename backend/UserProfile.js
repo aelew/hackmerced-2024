@@ -18,7 +18,6 @@ const UserProfileSchema = new mongoose.Schema({
   // personal tolerances
   pollenTolerance: Number,
   airQualityTolerance: Number,
-  radiationTolerance: Number,
   covidTolerance: Number,
   fluTolerance: Number
   }

@@ -15,6 +15,7 @@ main {
   display: flex;
   padding: 1rem;
   height: calc(100vh - 4rem);
+  justify-content: space-between;
 }
 
 .header-box {
@@ -35,6 +36,10 @@ main {
 
 .header h1 {
   font-size: 1.5rem;
+}
+
+.header img {
+  cursor: pointer;
 }
 
 .search-bar {
@@ -67,23 +72,20 @@ main {
 }
 
 .sidebar {
-  position: absolute;
-  height: 89vh;
+  position: relative;
+  height: 100%;
   background-color: rgb(227, 223, 215);
-  width: 20%;
+  width: 20vw;
   color: rgb(46, 46, 46);
+  border-radius: 0.5em;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   transition: all 1s;
-  right: -100%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
-.sidebar.active {
-  right: 0;
-}
 
 .sidebar h1 {
   width: 70%;
@@ -143,6 +145,10 @@ main {
   height: 25px;
   width: 25px;
   background-color: #eee;
+}
+
+.checkmark.radio{
+  border-radius: 50%;
 }
 
 .container:hover {
@@ -206,10 +212,10 @@ main {
 
 .summary-card {
   height: 600px;
-  width: 96%;
+  width: 98%;
+  margin-left: 1%;
   background-color: rgb(227, 223, 215);
   border-radius: 50px;
-  margin-left: 2%;
   border: 10px solid rgb(218, 125, 125);
   color: rgb(46, 46, 46);
 }

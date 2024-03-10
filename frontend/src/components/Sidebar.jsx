@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
 
 import { useAppContext } from '../AppContext.js';
-import { getApiBaseUrl } from '../lib/utils';
+import { getApiBaseUrl } from '../lib/utils.js';
 import Button from './Button.jsx';
 import SelectButton from './SelectButton.jsx';
 import ToleranceSlider from './ToleranceSlider.jsx';

@@ -7,7 +7,7 @@ import Map from './components/maps/Map.jsx';
 import PollenMap from './components/maps/PollenMap.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Summary from './components/Summary.jsx';
-import { getApiBaseUrl } from './lib/utils';
+import { getApiBaseUrl } from './lib/utils.js';
 
 import './App.css';
 

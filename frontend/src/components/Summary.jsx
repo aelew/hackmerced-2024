@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card.jsx';
 
-const Summary = ({ summaryRef }) => {
+const Summary = ({ summaryRef, summaryInfo }) => {
   const [safe, setSafety] = useState(true);
   const [status, setStatus] = useState([
     'red',
@@ -10,11 +10,16 @@ const Summary = ({ summaryRef }) => {
     'yellow',
     'green'
   ]);
+  
+  const data = [25, 50, 25, 0, 100]
+  
+
+
   return (
     <div className="summary-card" ref={summaryRef}>
       <h1>Summary</h1>
       <div className="grid">
-        <div className={'card ' + status[0]}>
+        <div className={'card ' + (data[0]>75 ? 'red' : data[0]>50 ? 'orange' : data[0]>25 ? 'yellow' : 'green')}>
           <Card
             icon="🌻 Pollen Levels"
             text={
@@ -22,7 +27,7 @@ const Summary = ({ summaryRef }) => {
             }
           />
         </div>
-        <div className={'card ' + status[1]}>
+        <div className={'card ' + (data[1]>75 ? 'red' : data[1]>50 ? 'orange' : data[1]>25 ? 'yellow' : 'green')}>
           <Card
             icon="🏭 Air Quality"
             text={
@@ -30,15 +35,15 @@ const Summary = ({ summaryRef }) => {
             }
           />
         </div>
-        <div className={'card ' + status[2]}>
+        <div className={'card ' + (data[2]>75 ? 'red' : data[2]>50 ? 'orange' : data[2]>25 ? 'yellow' : 'green')}>
           <Card
-            icon="☢️ Radiation Levels (remove)"
+            icon="☢️ Radiation Levels"
             text={
               'Radiation levels are low in your area currently! Current conditions are completely safe in terms of Radiation.'
             }
           />
         </div>
-        <div className={'card ' + status[3]}>
+        <div className={'card ' + (data[3]>75 ? 'red' : data[3]>50 ? 'orange' : data[3]>25 ? 'yellow' : 'green')}>
           <Card
             icon="🦠 COVID-19 Cases"
             text={
@@ -46,7 +51,7 @@ const Summary = ({ summaryRef }) => {
             }
           />
         </div>
-        <div className={'card ' + status[4]}>
+        <div className={'card ' + (data[4]>75 ? 'red' : data[4]>50 ? 'orange' : data[4]>25 ? 'yellow' : 'green')}>
           <Card
             icon="🤧 Flu Cases"
             text={

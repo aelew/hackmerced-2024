@@ -41,9 +41,9 @@ const Summary = ({ summaryRef }) => {
         </div>
         <div className={'card ' + status[3]}>
           <Card
-            icon="🦠 Covid Cases"
+            icon="🦠 COVID-19 Cases"
             text={
-              'There are currently 20 known cases of Covid-19 in your area. Consider wearing a mask and practicing moderate social distancing.'
+              'There are currently 20 known cases of COVID-19 in your area. Consider wearing a mask and practicing moderate social distancing.'
             }
           />
         </div>

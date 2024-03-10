@@ -31,10 +31,10 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <h1>
         Settings <IoMdSettings size={50} />
       </h1>
-      <h3>Show On Map:</h3>
+      <h3>Show on map</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
-        {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map(
+        {['Pollen', 'Air Quality', 'Radiation', 'COVID-19', 'Flu'].map(
           (type) => (
             <SelectButton
               key={type}
@@ -47,18 +47,18 @@ const Sidebar = ({ displaySummary, setMap }) => {
           )
         )}
       </div>
-      <h3>Vulnerabilities:</h3>
+      <h3>Vulnerabilities</h3>
       <div className="section">
         <SelectButton text="Allergy" type="checkbox" />
         <SelectButton text="Respiratory" type="checkbox" />
         <SelectButton text="Immune System" type="checkbox" />
       </div>
-      <h3>Personal Tolerances:</h3>
-      <div className="section">
+      <h3>Personal Tolerances</h3>
+      <div className="section" style={{ gap: '1rem' }}>
         <QualitySlider text="Pollen" />
         <QualitySlider text="Air Quality" />
         <QualitySlider text="Radiation" />
-        <QualitySlider text="Covid-19" />
+        <QualitySlider text="COVID-19" />
         <QualitySlider text="Flu" />
       </div>
       <Button text="Calculate" displaySummary={displaySummary} />

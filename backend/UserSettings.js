@@ -13,10 +13,7 @@ const UserSettingsSchema = new mongoose.Schema({
   },
   tolerances: {
     pollenTolerance: Number,
-    airQualityTolerance: Number,
-    radiationTolerance: Number,
-    covidTolerance: Number,
-    fluTolerance: Number
+    airQualityTolerance: Number
   }
 });
 

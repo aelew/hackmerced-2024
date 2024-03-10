@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 
 const marks = [
   {
-    value: 0,
+    value: 1,
     label: 'Great'
   },
   {

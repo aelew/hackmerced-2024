@@ -4,16 +4,12 @@ import { IoMdSettings } from 'react-icons/io';
 import Button from './Button.jsx';
 import QualitySlider from './QualitySlider.jsx';
 import SelectButton from './SelectButton.jsx';
+import Selector from './Selector.jsx';
 
 const Sidebar = ({ displaySummary, setMap }) => {
   const [selectedType, setSelectedType] = useState('');
   const [profile, setProfile] = useState({
     userName: String
-  });
-  const [vulnerabilities, setVulnerabilities] = useState({
-    allergy: Boolean,
-    respiratory: Boolean,
-    immuneSystem: Boolean
   });
 
   const [tolerance, setTolerance] = useState({
@@ -25,7 +21,6 @@ const Sidebar = ({ displaySummary, setMap }) => {
   });
   const handleSelectedType = (type) => {
     setSelectedType(type);
-    displaySummary(type);
   };
   return (
     <div className="sidebar active">
@@ -48,11 +43,9 @@ const Sidebar = ({ displaySummary, setMap }) => {
           )
         )}
       </div>
-      <h3>Vulnerabilities:</h3>
+      <h3>Medical Information:</h3>
       <div className="section">
-        <SelectButton text="Allergy" type="checkbox" />
-        <SelectButton text="Respiratory" type="checkbox" />
-        <SelectButton text="Immune System" type="checkbox" />
+        <Selector />
       </div>
       <h3>Personal Tolerances:</h3>
       <div className="section">

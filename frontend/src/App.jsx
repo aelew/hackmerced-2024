@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
@@ -13,9 +13,16 @@ import PollenMap from './components/maps/PollenMap.jsx';
 function App() {
   const [showSummary, setShowSummary] = useState(false);
   const [currentMap, setCurrentMap] = useState('default');
+  const summaryRef = useRef();
 
   const displaySummary = () => {
     setShowSummary(true);
+    // setTimeout "next tick" hack
+    setTimeout(() => {
+      summaryRef.current.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
   };
 
   return (
@@ -31,7 +38,9 @@ function App() {
           setMap={setCurrentMap}
         />
       </main>
-      {showSummary && <Summary sumaryState={showSummary} />}
+      {showSummary && (
+        <Summary summaryRef={summaryRef} sumaryState={showSummary} />
+      )}
     </>
   );
 }

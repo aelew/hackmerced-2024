@@ -34,13 +34,15 @@ main {
   width: 100%;
 }
 
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .header h1 {
   font-size: 1.5rem;
   letter-spacing: -0.025em;
-}
-
-.header img {
-  cursor: pointer;
 }
 
 .search-bar {
@@ -59,11 +61,17 @@ main {
   border-radius: 20px;
   outline: none;
   font-size: 16px;
+  font-weight: 500;
+}
+
+.search-bar input[type='text']::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
 }
 
 .search-bar input[type='image'] {
   position: absolute;
-  margin-left: 350px;
+  margin-left: 365px;
 }
 
 .nav-bar {

@@ -280,12 +280,60 @@ main {
   margin: 1.75rem;
   padding: 1rem;
   color: #000;
+  max-width: 384px;
   border-radius: 0.375rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 83vh;
 }
 
 .place-card h1 {
   font-size: 1.5rem;
   line-height: 1.5rem;
+}
+
+.place-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pollen-forecasts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pollen-forecast-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pollen-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pollen-type-card {
+  padding: 0.75rem;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.pollen-type-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pollen-type-card-header span {
+  font-weight: 500;
 }
 
 /* Google Maps marker color fix */

@@ -25,7 +25,6 @@ const Sidebar = ({ displaySummary, setMap }) => {
   });
   const handleSelectedType = (type) => {
     setSelectedType(type);
-    displaySummary(type);
   };
   return (
     <div className="sidebar active">

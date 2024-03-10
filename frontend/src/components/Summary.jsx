@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
+import { useAppContext } from '../AppContext.js';
 import Card from './Card.jsx';
 
-const Summary = ({ summaryRef, summaryInfo }) => {
+const Summary = ({ summaryRef, settings }) => {
   const [safe, setSafety] = useState(true);
   const [status, setStatus] = useState([
     'red',
@@ -10,16 +12,32 @@ const Summary = ({ summaryRef, summaryInfo }) => {
     'yellow',
     'green'
   ]);
-  
-  const data = [25, 50, 25, 0, 100]
-  
 
+  const { place, airQualityIndexes, pollenForecast } = useAppContext();
+
+
+  // check your browser console to see the data
+  console.log('settings:', settings);
+  console.log('place:', place);
+  console.log('airQualityIndexes:', airQualityIndexes);
+  console.log('pollenForecast:', pollenForecast);
 
   return (
     <div className="summary-card" ref={summaryRef}>
       <h1>Summary</h1>
       <div className="grid">
-        <div className={'card ' + (data[0]>75 ? 'red' : data[0]>50 ? 'orange' : data[0]>25 ? 'yellow' : 'green')}>
+        <div
+          className={
+            'card ' +
+            (data[0] > 75
+              ? 'red'
+              : data[0] > 50
+                ? 'orange'
+                : data[0] > 25
+                  ? 'yellow'
+                  : 'green')
+          }
+        >
           <Card
             icon="🌻 Pollen Levels"
             text={
@@ -27,7 +45,18 @@ const Summary = ({ summaryRef, summaryInfo }) => {
             }
           />
         </div>
-        <div className={'card ' + (data[1]>75 ? 'red' : data[1]>50 ? 'orange' : data[1]>25 ? 'yellow' : 'green')}>
+        <div
+          className={
+            'card ' +
+            (data[1] > 75
+              ? 'red'
+              : data[1] > 50
+                ? 'orange'
+                : data[1] > 25
+                  ? 'yellow'
+                  : 'green')
+          }
+        >
           <Card
             icon="🏭 Air Quality"
             text={
@@ -35,7 +64,18 @@ const Summary = ({ summaryRef, summaryInfo }) => {
             }
           />
         </div>
-        <div className={'card ' + (data[2]>75 ? 'red' : data[2]>50 ? 'orange' : data[2]>25 ? 'yellow' : 'green')}>
+        <div
+          className={
+            'card ' +
+            (data[2] > 75
+              ? 'red'
+              : data[2] > 50
+                ? 'orange'
+                : data[2] > 25
+                  ? 'yellow'
+                  : 'green')
+          }
+        >
           <Card
             icon="☢️ Radiation Levels"
             text={
@@ -43,7 +83,18 @@ const Summary = ({ summaryRef, summaryInfo }) => {
             }
           />
         </div>
-        <div className={'card ' + (data[3]>75 ? 'red' : data[3]>50 ? 'orange' : data[3]>25 ? 'yellow' : 'green')}>
+        <div
+          className={
+            'card ' +
+            (data[3] > 75
+              ? 'red'
+              : data[3] > 50
+                ? 'orange'
+                : data[3] > 25
+                  ? 'yellow'
+                  : 'green')
+          }
+        >
           <Card
             icon="🦠 COVID-19 Cases"
             text={
@@ -51,7 +102,18 @@ const Summary = ({ summaryRef, summaryInfo }) => {
             }
           />
         </div>
-        <div className={'card ' + (data[4]>75 ? 'red' : data[4]>50 ? 'orange' : data[4]>25 ? 'yellow' : 'green')}>
+        <div
+          className={
+            'card ' +
+            (data[4] > 75
+              ? 'red'
+              : data[4] > 50
+                ? 'orange'
+                : data[4] > 25
+                  ? 'yellow'
+                  : 'green')
+          }
+        >
           <Card
             icon="🤧 Flu Cases"
             text={

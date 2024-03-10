@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
+
+import { useAppContext } from '../AppContext.js';
 import Button from './Button.jsx';
 import SelectButton from './SelectButton.jsx';
 import ToleranceSlider from './ToleranceSlider.jsx';
 
 const Sidebar = ({ displaySummary, setMap }) => {
   const [selectedType, setSelectedType] = useState('None');
+  const { place } = useAppContext();
 
   const [vulnerabilities, setVulnerabilities] = useState({
     allergy: false,
@@ -86,9 +89,13 @@ const Sidebar = ({ displaySummary, setMap }) => {
       </div>
       <Button
         text="Calculate"
-        onClick={() => 
-          displaySummary(vulnerabilities, tolerance)
-        }
+        onClick={() => {
+          if (!place) {
+            alert('Please select a location first!');
+            return;
+          }
+          displaySummary(vulnerabilities, tolerance);
+        }}
       />
     </div>
   );

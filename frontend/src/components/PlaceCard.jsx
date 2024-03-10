@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { LuX } from 'react-icons/lu';
 
 import { useAppContext } from '../AppContext';
 
 export default function PlaceCard() {
-  const [airQualityIndexes, setAirQualityIndexes] = useState([]);
-  const [pollenForecast, setPollenForecast] = useState([]);
-  const { place, setPlace } = useAppContext();
+  const {
+    place,
+    airQualityIndexes,
+    pollenForecast,
+    setPlace,
+    setAirQualityIndexes,
+    setPollenForecast
+  } = useAppContext();
 
   useEffect(() => {
     if (place) {
@@ -37,7 +42,7 @@ export default function PlaceCard() {
         .then((data) => setPollenForecast(data.dailyInfo))
         .catch((err) => console.error('failed to fetch pollen forecast:', err));
     }
-  }, [place]);
+  }, [place, setAirQualityIndexes, setPollenForecast]);
 
   if (!place) {
     return null;

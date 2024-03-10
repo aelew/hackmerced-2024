@@ -35,7 +35,7 @@ const Sidebar = ({ displaySummary, setMap }) => {
       <h3>Show On Map:</h3>
       <div className="section">
         {/* add weed, tree, grass subsection drop downs possibly?*/}
-        {['Pollen', 'Air Quality', 'Radiation', 'Covid-19', 'Flu'].map(
+        {['Default', 'Pollen', 'Air Quality', 'Covid-19', 'Flu'].map(
           (type) => (
             <SelectButton
               key={type}

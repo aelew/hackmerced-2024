@@ -1,7 +1,7 @@
 const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
   return (
     <label
-      className="container"
+      className={type === 'radio' ? 'container radio': 'container checkbox'}
       onClick={() => {
         if ({ text }.text === 'Pollen') {
           setMap('Pollen');
@@ -19,7 +19,7 @@ const SelectButton = ({ text, type, isSelected, onChange, setMap }) => {
         onChange={() => onChange(text)}
         name={type === 'radio' ? 'trackingSelection' : text}
       />
-      <span className={type === 'radio' ? 'checkmark radio' : 'checkmark'}></span>
+      <span className={'checkmark'}></span>
     </label>
   );
 };

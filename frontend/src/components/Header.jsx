@@ -24,7 +24,8 @@ const Header = () => {
               cursor: 'pointer',
               fontSize: '1rem',
               border: 'none'
-            }}
+            }
+          }
           >
             {isAuthenticated ? 'Log out' : 'Log in'}
           </button>

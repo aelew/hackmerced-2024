@@ -84,6 +84,7 @@ main {
   align-items: center;
   transition: all 1s;
   overflow-y: scroll;
+  animation: 1s ease-in 0s 1 slideInFromRight;
 }
 
 
@@ -138,7 +139,7 @@ main {
 }
 
 /* Create a custom checkbox */
-.checkmark {
+.container.checkbox .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -147,7 +148,13 @@ main {
   background-color: #eee;
 }
 
-.checkmark.radio{
+.container.radio .checkmark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
   border-radius: 50%;
 }
 
@@ -156,13 +163,17 @@ main {
   border-radius: 5px;
 }
 
-.container:hover input ~ .checkmark {
+.container:hover input ~ .checkmark, .container.radio :hover input ~ .checkmark{
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container.checkbox input:checked ~ .checkmark {
   background-color: rgb(89, 198, 133);
+}
+
+.container.radio input:checked ~ .checkmark {
+  background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -178,7 +189,16 @@ main {
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container.radio .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.container.checkbox .chemark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -273,6 +293,7 @@ main {
 }
 
 .map {
+  animation: 1s ease-in 0s 1 slideInFromLeft;
   width: 77vw;
   height: 100%;
   border-radius: 0.5rem;
@@ -350,4 +371,22 @@ main {
 /* Google Maps marker popup close button outline fix */
 button.gm-ui-hover-effect {
   outline: none;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    margin-left: 20%;
+  }
+  to {
+    margin-left: 0%;
+  }
 }
